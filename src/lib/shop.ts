@@ -1,7 +1,4 @@
 import blueMotorsportShirt from "@/assets/sih-blue-motorsport-shirt.jpeg.asset.json";
-import redAnimeShirt from "@/assets/sih-red-anime-shirt.jpeg.asset.json";
-import greyMountainShirt from "@/assets/sih-grey-mountain-shirt.jpeg.asset.json";
-import whiteEssentialShirt from "@/assets/sih-white-essential-shirt.jpeg.asset.json";
 import pantsImg from "@/assets/p-pants.jpg.asset.json";
 import gadgetImg from "@/assets/p-gadget.jpg.asset.json";
 import sunglassesImg from "@/assets/p-sunglasses.jpg.asset.json";
