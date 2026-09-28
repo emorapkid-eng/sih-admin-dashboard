@@ -40,21 +40,11 @@ export type Product = {
   category: CategorySlug;
   price: number;
   image: string;
+  description?: string;
+  isNew?: boolean;
+  isFeatured?: boolean;
   tag?: string;
 };
-
-export const PRODUCTS: Product[] = [
-  { id: "sh-01", name: "Blue Motorsport Shirt", category: "shirts", price: 1600, image: blueMotorsportShirt.url, tag: "NEW" },
-  { id: "sh-02", name: "Red Dreamer Shirt", category: "shirts", price: 1600, image: redAnimeShirt.url },
-  { id: "sh-03", name: "Grey Mountain Shirt", category: "shirts", price: 1600, image: greyMountainShirt.url },
-  { id: "sh-04", name: "White Essential Shirt", category: "shirts", price: 1600, image: whiteEssentialShirt.url },
-  { id: "pt-01", name: "Relaxed Fleece Pants", category: "pants", price: 3900, image: pantsImg.url, tag: "BEST SELLER" },
-  { id: "pt-02", name: "Tapered Utility Pants", category: "pants", price: 4700, image: pantsImg.url },
-  { id: "gd-01", name: "Mono Wireless Buds", category: "gadgets", price: 6500, image: gadgetImg.url, tag: "NEW" },
-  { id: "gd-02", name: "Matte Black Smartwatch", category: "gadgets", price: 8900, image: gadgetImg.url },
-  { id: "sg-01", name: "Editorial Square Frames", category: "sunglasses", price: 3200, image: sunglassesImg.url, tag: "BEST SELLER" },
-  { id: "sg-02", name: "Shadow Line Sunglasses", category: "sunglasses", price: 3800, image: sunglassesImg.url },
-];
 
 export const categoryName = (slug: CategorySlug) =>
   CATEGORIES.find((c) => c.slug === slug)?.name ?? slug;
