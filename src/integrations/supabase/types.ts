@@ -14,7 +14,90 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      orders: {
+        Row: {
+          address: string
+          city: string
+          created_at: string
+          customer_name: string
+          id: string
+          items: Json
+          location: string | null
+          payment: string
+          phone: string
+          status: string
+          total: number
+        }
+        Insert: {
+          address: string
+          city: string
+          created_at?: string
+          customer_name: string
+          id?: string
+          items?: Json
+          location?: string | null
+          payment?: string
+          phone: string
+          status?: string
+          total?: number
+        }
+        Update: {
+          address?: string
+          city?: string
+          created_at?: string
+          customer_name?: string
+          id?: string
+          items?: Json
+          location?: string | null
+          payment?: string
+          phone?: string
+          status?: string
+          total?: number
+        }
+        Relationships: []
+      }
+      products: {
+        Row: {
+          category: string
+          created_at: string
+          description: string
+          id: string
+          image: string
+          is_featured: boolean
+          is_new: boolean
+          name: string
+          price: number
+          sort_order: number
+          updated_at: string
+        }
+        Insert: {
+          category: string
+          created_at?: string
+          description?: string
+          id: string
+          image?: string
+          is_featured?: boolean
+          is_new?: boolean
+          name: string
+          price?: number
+          sort_order?: number
+          updated_at?: string
+        }
+        Update: {
+          category?: string
+          created_at?: string
+          description?: string
+          id?: string
+          image?: string
+          is_featured?: boolean
+          is_new?: boolean
+          name?: string
+          price?: number
+          sort_order?: number
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
