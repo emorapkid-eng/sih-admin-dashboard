@@ -10,33 +10,180 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as CartRouteImport } from './routes/cart'
+import { Route as ChaptersRouteImport } from './routes/chapters'
+import { Route as CheckoutRouteImport } from './routes/checkout'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as GadgetsRouteImport } from './routes/gadgets'
+import { Route as PantsRouteImport } from './routes/pants'
+import { Route as ShirtsRouteImport } from './routes/shirts'
+import { Route as ShopRouteImport } from './routes/shop'
+import { Route as SunglassesRouteImport } from './routes/sunglasses'
+import { Route as ProductsProductIdRouteImport } from './routes/products.$productId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CartRoute = CartRouteImport.update({
+  id: '/cart',
+  path: '/cart',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ChaptersRoute = ChaptersRouteImport.update({
+  id: '/chapters',
+  path: '/chapters',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CheckoutRoute = CheckoutRouteImport.update({
+  id: '/checkout',
+  path: '/checkout',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GadgetsRoute = GadgetsRouteImport.update({
+  id: '/gadgets',
+  path: '/gadgets',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PantsRoute = PantsRouteImport.update({
+  id: '/pants',
+  path: '/pants',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ShirtsRoute = ShirtsRouteImport.update({
+  id: '/shirts',
+  path: '/shirts',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ShopRoute = ShopRouteImport.update({
+  id: '/shop',
+  path: '/shop',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SunglassesRoute = SunglassesRouteImport.update({
+  id: '/sunglasses',
+  path: '/sunglasses',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProductsProductIdRoute = ProductsProductIdRouteImport.update({
+  id: '/products/$productId',
+  path: '/products/$productId',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/cart': typeof CartRoute
+  '/chapters': typeof ChaptersRoute
+  '/checkout': typeof CheckoutRoute
+  '/contact': typeof ContactRoute
+  '/gadgets': typeof GadgetsRoute
+  '/pants': typeof PantsRoute
+  '/shirts': typeof ShirtsRoute
+  '/shop': typeof ShopRoute
+  '/sunglasses': typeof SunglassesRoute
+  '/products/$productId': typeof ProductsProductIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/cart': typeof CartRoute
+  '/chapters': typeof ChaptersRoute
+  '/checkout': typeof CheckoutRoute
+  '/contact': typeof ContactRoute
+  '/gadgets': typeof GadgetsRoute
+  '/pants': typeof PantsRoute
+  '/shirts': typeof ShirtsRoute
+  '/shop': typeof ShopRoute
+  '/sunglasses': typeof SunglassesRoute
+  '/products/$productId': typeof ProductsProductIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/cart': typeof CartRoute
+  '/chapters': typeof ChaptersRoute
+  '/checkout': typeof CheckoutRoute
+  '/contact': typeof ContactRoute
+  '/gadgets': typeof GadgetsRoute
+  '/pants': typeof PantsRoute
+  '/shirts': typeof ShirtsRoute
+  '/shop': typeof ShopRoute
+  '/sunglasses': typeof SunglassesRoute
+  '/products/$productId': typeof ProductsProductIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/cart'
+    | '/chapters'
+    | '/checkout'
+    | '/contact'
+    | '/gadgets'
+    | '/pants'
+    | '/shirts'
+    | '/shop'
+    | '/sunglasses'
+    | '/products/$productId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about'
+    | '/cart'
+    | '/chapters'
+    | '/checkout'
+    | '/contact'
+    | '/gadgets'
+    | '/pants'
+    | '/shirts'
+    | '/shop'
+    | '/sunglasses'
+    | '/products/$productId'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/cart'
+    | '/chapters'
+    | '/checkout'
+    | '/contact'
+    | '/gadgets'
+    | '/pants'
+    | '/shirts'
+    | '/shop'
+    | '/sunglasses'
+    | '/products/$productId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  CartRoute: typeof CartRoute
+  ChaptersRoute: typeof ChaptersRoute
+  CheckoutRoute: typeof CheckoutRoute
+  ContactRoute: typeof ContactRoute
+  GadgetsRoute: typeof GadgetsRoute
+  PantsRoute: typeof PantsRoute
+  ShirtsRoute: typeof ShirtsRoute
+  ShopRoute: typeof ShopRoute
+  SunglassesRoute: typeof SunglassesRoute
+  ProductsProductIdRoute: typeof ProductsProductIdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +195,99 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cart': {
+      id: '/cart'
+      path: '/cart'
+      fullPath: '/cart'
+      preLoaderRoute: typeof CartRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/chapters': {
+      id: '/chapters'
+      path: '/chapters'
+      fullPath: '/chapters'
+      preLoaderRoute: typeof ChaptersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/checkout': {
+      id: '/checkout'
+      path: '/checkout'
+      fullPath: '/checkout'
+      preLoaderRoute: typeof CheckoutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gadgets': {
+      id: '/gadgets'
+      path: '/gadgets'
+      fullPath: '/gadgets'
+      preLoaderRoute: typeof GadgetsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pants': {
+      id: '/pants'
+      path: '/pants'
+      fullPath: '/pants'
+      preLoaderRoute: typeof PantsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/shirts': {
+      id: '/shirts'
+      path: '/shirts'
+      fullPath: '/shirts'
+      preLoaderRoute: typeof ShirtsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/shop': {
+      id: '/shop'
+      path: '/shop'
+      fullPath: '/shop'
+      preLoaderRoute: typeof ShopRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sunglasses': {
+      id: '/sunglasses'
+      path: '/sunglasses'
+      fullPath: '/sunglasses'
+      preLoaderRoute: typeof SunglassesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/products/$productId': {
+      id: '/products/$productId'
+      path: '/products/$productId'
+      fullPath: '/products/$productId'
+      preLoaderRoute: typeof ProductsProductIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  CartRoute: CartRoute,
+  ChaptersRoute: ChaptersRoute,
+  CheckoutRoute: CheckoutRoute,
+  ContactRoute: ContactRoute,
+  GadgetsRoute: GadgetsRoute,
+  PantsRoute: PantsRoute,
+  ShirtsRoute: ShirtsRoute,
+  ShopRoute: ShopRoute,
+  SunglassesRoute: SunglassesRoute,
+  ProductsProductIdRoute: ProductsProductIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

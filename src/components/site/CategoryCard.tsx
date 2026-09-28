@@ -1,0 +1,5 @@
+import { Link } from "@tanstack/react-router";
+import { ArrowUpRight } from "lucide-react";
+import type { CategorySlug } from "@/lib/shop";
+const paths={shirts:"/shirts",pants:"/pants",gadgets:"/gadgets",sunglasses:"/sunglasses"} as const;
+export function CategoryCard({category}:{category:{slug:CategorySlug;name:string;tagline:string;image:string}}){return <Link to={paths[category.slug]} className="group relative min-h-72 overflow-hidden rounded-sm sm:min-h-96"><img src={category.image} alt={category.name} className="absolute inset-0 h-full w-full object-cover image-zoom group-hover:scale-[1.03]"/><div className="absolute inset-0 bg-gradient-to-t from-contrast/70 via-transparent to-transparent"/><div className="absolute inset-x-0 bottom-0 grid grid-cols-[minmax(0,1fr)_auto] items-end gap-4 p-5 text-contrast-foreground"><div className="min-w-0"><h3 className="text-xl font-semibold uppercase">{category.name}</h3><p className="mt-1 truncate text-sm text-contrast-foreground/75">{category.tagline}</p></div><span className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-contrast-foreground/60"><ArrowUpRight size={17}/></span></div></Link>}
