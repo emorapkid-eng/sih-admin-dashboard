@@ -6,6 +6,7 @@ import { Shell, meta } from "@/components/site/Shell";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/lib/cart";
 import { STORE, categoryName, formatPrice } from "@/lib/shop";
+import { createOrder } from "@/lib/orders.functions";
 
 export const Route = createFileRoute("/checkout")({
   head: () => meta("Checkout — SIH WEARS", "Complete your SIH Wears order with cash on delivery or NayaPay. Confirmed over WhatsApp."),
@@ -51,6 +52,18 @@ function Checkout() {
       "", `*Total:* ${formatPrice(subtotal)}`,
       `*Payment:* ${payment === "COD" ? "Cash on Delivery" : `NayaPay (${STORE.nayapayNumber})`}`,
     ].filter(Boolean);
+    void createOrder({
+      data: {
+        name: form.name,
+        phone: form.phone,
+        city: form.city,
+        address: form.address,
+        location,
+        payment,
+        items: items.map(({ product, qty }) => ({ name: product.name, qty, price: product.price })),
+        total: subtotal,
+      },
+    }).catch(() => undefined);
     const url = `https://wa.me/${STORE.whatsappNumber}?text=${encodeURIComponent(lines.join("\n"))}`;
     const w = window.open(url, "_blank", "noopener,noreferrer");
     if (!w) { window.location.href = url; return; }

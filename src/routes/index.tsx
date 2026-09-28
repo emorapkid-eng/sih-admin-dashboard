@@ -7,7 +7,8 @@ import { Footer } from "@/components/site/Footer";
 import { CategoryCard } from "@/components/site/CategoryCard";
 import { ProductGrid, meta } from "@/components/site/Shell";
 import { Button } from "@/components/ui/button";
-import { CATEGORIES, PRODUCTS } from "@/lib/shop";
+import { CATEGORIES } from "@/lib/shop";
+import { useProducts } from "@/lib/products-context";
 
 export const Route = createFileRoute("/")({
   head: () =>
@@ -26,6 +27,7 @@ const SERVICES = [
 ] as const;
 
 function Index() {
+  const products = useProducts();
   const [sent, setSent] = useState(false);
   return (
     <>
@@ -41,7 +43,7 @@ function Index() {
               View all <ArrowRight size={14} />
             </Link>
           </div>
-          <ProductGrid products={PRODUCTS.slice(0, 8)} />
+          <ProductGrid products={products.slice(0, 8)} />
         </section>
 
         <section className="border-t bg-soft">

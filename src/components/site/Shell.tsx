@@ -3,7 +3,8 @@ import { Header } from "./Header";
 import { Footer } from "./Footer";
 import { PageIntro } from "./PageIntro";
 import { ProductCard } from "./ProductCard";
-import { PRODUCTS, type CategorySlug, CATEGORIES } from "@/lib/shop";
+import { type CategorySlug, CATEGORIES, type Product } from "@/lib/shop";
+import { useProducts } from "@/lib/products-context";
 
 export function Shell({ children }: { children: ReactNode }) {
   return (
@@ -15,7 +16,7 @@ export function Shell({ children }: { children: ReactNode }) {
   );
 }
 
-export function ProductGrid({ products }: { products: typeof PRODUCTS }) {
+export function ProductGrid({ products }: { products: Product[] }) {
   return (
     <div className="grid grid-cols-2 gap-x-3 gap-y-8 sm:gap-x-5 lg:grid-cols-4">
       {products.map((p) => (
@@ -27,7 +28,7 @@ export function ProductGrid({ products }: { products: typeof PRODUCTS }) {
 
 export function CategoryPage({ slug }: { slug: CategorySlug }) {
   const cat = CATEGORIES.find((c) => c.slug === slug)!;
-  const products = PRODUCTS.filter((p) => p.category === slug);
+  const products = useProducts().filter((p) => p.category === slug);
   return (
     <Shell>
       <PageIntro eyebrow="Collection" title={cat.name} copy={cat.tagline} />

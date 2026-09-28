@@ -3,7 +3,8 @@ import { Search } from "lucide-react";
 import { z } from "zod";
 import { PageIntro } from "@/components/site/PageIntro";
 import { ProductGrid, Shell, meta } from "@/components/site/Shell";
-import { CATEGORIES, PRODUCTS } from "@/lib/shop";
+import { CATEGORIES } from "@/lib/shop";
+import { useProducts } from "@/lib/products-context";
 
 const schema = z.object({ q: z.string().optional().catch(undefined), category: z.string().optional().catch(undefined) });
 
@@ -17,7 +18,8 @@ function Shop() {
   const { q = "", category = "all" } = Route.useSearch();
   const navigate = useNavigate({ from: "/shop" });
   const term = q.toLowerCase();
-  const list = PRODUCTS.filter((p) => (category === "all" || p.category === category) && (!term || p.name.toLowerCase().includes(term) || p.category.includes(term)));
+  const allProducts = useProducts();
+  const list = allProducts.filter((p) => (category === "all" || p.category === category) && (!term || p.name.toLowerCase().includes(term) || p.category.includes(term)));
   const set = (s: { q?: string | undefined; category?: string | undefined }) => navigate({ search: (prev) => ({ ...prev, ...s }), replace: true });
   return (
     <Shell>

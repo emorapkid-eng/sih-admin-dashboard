@@ -7,7 +7,8 @@ import {
   useState,
   type ReactNode,
 } from "react";
-import { PRODUCTS, type Product } from "./shop";
+import { useProducts } from "./products-context";
+import type { Product } from "./shop";
 
 export type CartLine = { id: string; qty: number };
 
@@ -28,6 +29,7 @@ const Ctx = createContext<CartCtx | null>(null);
 const KEY = "sih-cart";
 
 export function CartProvider({ children }: { children: ReactNode }) {
+  const products = useProducts();
   const [lines, setLines] = useState<CartLine[]>([]);
   const [open, setOpen] = useState(false);
 
@@ -73,11 +75,11 @@ export function CartProvider({ children }: { children: ReactNode }) {
     () =>
       lines
         .map((l) => {
-          const product = PRODUCTS.find((p) => p.id === l.id);
+          const product = products.find((p) => p.id === l.id);
           return product ? { product, qty: l.qty } : null;
         })
         .filter(Boolean) as { product: Product; qty: number }[],
-    [lines],
+    [lines, products],
   );
 
   const value: CartCtx = {

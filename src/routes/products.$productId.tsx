@@ -4,11 +4,13 @@ import { useState } from "react";
 import { ProductGrid, Shell, meta } from "@/components/site/Shell";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/lib/cart";
-import { PRODUCTS, categoryName, formatPrice } from "@/lib/shop";
+import { categoryName, formatPrice } from "@/lib/shop";
+import { useProducts } from "@/lib/products-context";
+import { listProducts } from "@/lib/products.functions";
 
 export const Route = createFileRoute("/products/$productId")({
-  loader: ({ params }) => {
-    const product = PRODUCTS.find((p) => p.id === params.productId);
+  loader: async ({ params }) => {
+    const product = (await listProducts()).find((p) => p.id === params.productId);
     if (!product) throw notFound();
     return { product };
   },
@@ -37,7 +39,8 @@ function ProductPage() {
   const { product } = Route.useLoaderData();
   const { add } = useCart();
   const [qty, setQty] = useState(1);
-  const related = PRODUCTS.filter((p) => p.id !== product.id && p.category === product.category).concat(PRODUCTS.filter((p) => p.category !== product.category)).slice(0, 4);
+  const all = useProducts();
+  const related = all.filter((p) => p.id !== product.id && p.category === product.category).concat(all.filter((p) => p.category !== product.category)).slice(0, 4);
   return (
     <Shell>
       <div className="page-shell pt-6 text-[0.65rem] uppercase tracking-[0.12em] text-muted-foreground">

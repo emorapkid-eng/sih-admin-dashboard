@@ -10,6 +10,8 @@ import {
 import { useEffect, type ReactNode } from "react";
 
 import { CartProvider } from "@/lib/cart";
+import { ProductsProvider } from "@/lib/products-context";
+import { listProducts } from "@/lib/products.functions";
 import { CartDrawer } from "@/components/site/CartDrawer";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
@@ -75,6 +77,7 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
 }
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
+  loader: () => listProducts(),
   head: () => ({
     meta: [
       { charSet: "utf-8" },
@@ -114,14 +117,17 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const products = Route.useLoaderData();
 
   return (
     <QueryClientProvider client={queryClient}>
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <CartProvider>
-        <Outlet />
-        <CartDrawer />
-      </CartProvider>
+      <ProductsProvider products={products ?? []}>
+        <CartProvider>
+          <Outlet />
+          <CartDrawer />
+        </CartProvider>
+      </ProductsProvider>
     </QueryClientProvider>
   );
 }
