@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Headphones, RotateCcw, ShieldCheck, Truck, Instagram, Facebook } from "lucide-react";
 import { useState } from "react";
-import mannequin from "@/assets/sih-hero-mannequin.png.asset.json";
+import mannequin from "@/assets/sih-hero-mannequin.png";
 import { Hero } from "@/components/site/Hero";
 import { Footer } from "@/components/site/Footer";
 import { CategoryCard } from "@/components/site/CategoryCard";

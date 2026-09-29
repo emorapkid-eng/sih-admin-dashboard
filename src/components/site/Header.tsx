@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "@tanstack/react-router";
 import { Menu, Search, ShoppingBag, UserRound, X } from "lucide-react";
 import { useState } from "react";
-import logo from "@/assets/sih-logo.png.asset.json";
+import logo from "@/assets/sih-logo.png";
 import { useCart } from "@/lib/cart";
 import { Button } from "@/components/ui/button";
 

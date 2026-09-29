@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import mannequin from "@/assets/sih-hero-mannequin.png.asset.json";
+import mannequin from "@/assets/sih-hero-mannequin.png";
 import { PageIntro } from "@/components/site/PageIntro";
 import { Shell, meta } from "@/components/site/Shell";
 import { Button } from "@/components/ui/button";

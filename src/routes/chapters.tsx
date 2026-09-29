@@ -1,10 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
-import poster from "@/assets/sih-campaign-hero-poster.jpg.asset.json";
-import mannequin from "@/assets/sih-hero-mannequin.png.asset.json";
-import blue from "@/assets/sih-blue-motorsport-shirt.jpeg.asset.json";
-import red from "@/assets/sih-red-anime-shirt.jpeg.asset.json";
-import grey from "@/assets/sih-grey-mountain-shirt.jpeg.asset.json";
-import white from "@/assets/sih-white-essential-shirt.jpeg.asset.json";
+import poster from "@/assets/sih-campaign-hero-poster.jpg";
+import mannequin from "@/assets/sih-hero-mannequin.png";
+import blue from "@/assets/sih-blue-motorsport-shirt.jpeg";
+import red from "@/assets/sih-red-anime-shirt.jpeg";
+import grey from "@/assets/sih-grey-mountain-shirt.jpeg";
+import white from "@/assets/sih-white-essential-shirt.jpeg";
 import { PageIntro } from "@/components/site/PageIntro";
 import { Shell, meta } from "@/components/site/Shell";
 

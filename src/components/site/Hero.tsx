@@ -1,8 +1,8 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
-import videoMp4 from "@/assets/sih-campaign-hero.mp4.asset.json";
-import videoWebm from "@/assets/sih-campaign-hero.webm.asset.json";
-import poster from "@/assets/sih-campaign-hero-poster.jpg.asset.json";
+import videoMp4 from "@/assets/sih-campaign-hero.mp4";
+import videoWebm from "@/assets/sih-campaign-hero.webm";
+import poster from "@/assets/sih-campaign-hero-poster.jpg";
 import { Header } from "./Header";
 import { Button } from "@/components/ui/button";
 export function Hero(){return <section className="relative min-h-[90svh] overflow-hidden bg-contrast text-contrast-foreground sm:min-h-[92svh]">

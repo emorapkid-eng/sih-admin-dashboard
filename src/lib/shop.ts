@@ -1,7 +1,7 @@
-import blueMotorsportShirt from "@/assets/sih-blue-motorsport-shirt.jpeg.asset.json";
-import pantsImg from "@/assets/p-pants.jpg.asset.json";
-import gadgetImg from "@/assets/p-gadget.jpg.asset.json";
-import sunglassesImg from "@/assets/p-sunglasses.jpg.asset.json";
+import blueMotorsportShirt from "@/assets/sih-blue-motorsport-shirt.jpeg";
+import pantsImg from "@/assets/p-pants.jpg";
+import gadgetImg from "@/assets/p-gadget.jpg";
+import sunglassesImg from "@/assets/p-sunglasses.jpg";
 
 /* ---------------------------------------------------------------
  * STORE CONFIG — edit these values only
