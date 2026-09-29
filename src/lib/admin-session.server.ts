@@ -33,14 +33,16 @@ export function issueSession(email: string) {
   setCookie(COOKIE, token, {
     httpOnly: true,
     secure: true,
-    sameSite: "lax",
+    sameSite: "none",
+    partitioned: true,
     path: "/",
     maxAge: MAX_AGE,
   });
 }
 
 export function clearSession() {
-  setCookie(COOKIE, "", { httpOnly: true, secure: true, sameSite: "lax", path: "/", maxAge: 0 });
+  setCookie(COOKIE, "", { httpOnly: true, secure: true, sameSite: "none",
+    partitioned: true, path: "/", maxAge: 0 });
 }
 
 export function readSession(): { email: string } | null {
