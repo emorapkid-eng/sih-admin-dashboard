@@ -135,9 +135,9 @@ function Dashboard({ email, onSignOut }: { email: string; onSignOut: () => void 
       setProducts(p);
       setOrders(o);
     } catch {
-      setStatus("Session expired. Please reload and sign in again.");
+      onSignOut();
     }
-  }, []);
+  }, [onSignOut]);
 
   useEffect(() => {
     void load();
