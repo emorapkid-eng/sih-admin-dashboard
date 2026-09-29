@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "@tanstack/react-router";
 import { Menu, Search, ShoppingBag, UserRound, X } from "lucide-react";
 import { useState } from "react";
-import logo from "@/assets/sih-logo.png.asset.json";
+import logo from "@/assets/sih-logo.png";
 import { useCart } from "@/lib/cart";
 import { Button } from "@/components/ui/button";
 
@@ -20,7 +20,7 @@ export function Header({ overlay = false }: { overlay?: boolean }) {
   return <header className={overlay ? "absolute inset-x-0 top-0 z-40" : "sticky top-0 z-40 border-b bg-background/95 backdrop-blur-xl"}>
     <div className={`page-shell grid h-16 grid-cols-[minmax(0,1fr)_auto] items-center gap-3 sm:flex sm:h-[4.5rem] ${tone}`}>
       <Link to="/" className="flex min-w-0 items-center" aria-label="SIH WEARS home">
-        <img src={logo.url} alt="SIH WEARS" className={`h-11 w-auto shrink-0 object-contain sm:h-14 ${overlay ? "invert" : ""}`} />
+        <img src={logo} alt="SIH WEARS" className={`h-11 w-auto shrink-0 object-contain sm:h-14 ${overlay ? "invert" : ""}`} />
       </Link>
       <nav className="ml-auto hidden min-w-0 items-center gap-5 xl:flex">
         {NAV.map(([label,to]) => <Link key={to} to={to} activeOptions={{exact:to==="/"}} className="border-b border-transparent py-2 text-[0.68rem] font-medium uppercase tracking-[0.12em] opacity-70 transition hover:opacity-100" activeProps={{className:"opacity-100 border-current"}}>{label}</Link>)}

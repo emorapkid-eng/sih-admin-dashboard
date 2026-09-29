@@ -1,7 +1,7 @@
-import blueMotorsportShirt from "@/assets/sih-blue-motorsport-shirt.jpeg.asset.json";
-import pantsImg from "@/assets/p-pants.jpg.asset.json";
-import gadgetImg from "@/assets/p-gadget.jpg.asset.json";
-import sunglassesImg from "@/assets/p-sunglasses.jpg.asset.json";
+import blueMotorsportShirt from "@/assets/sih-blue-motorsport-shirt.jpeg";
+import pantsImg from "@/assets/p-pants.jpg";
+import gadgetImg from "@/assets/p-gadget.jpg";
+import sunglassesImg from "@/assets/p-sunglasses.jpg";
 
 /* ---------------------------------------------------------------
  * STORE CONFIG — edit these values only
@@ -25,10 +25,10 @@ export const CATEGORIES: {
   tagline: string;
   image: string;
 }[] = [
-  { slug: "shirts", name: "SHIRTS", tagline: "Classic fits. Modern looks.", image: blueMotorsportShirt.url },
-  { slug: "pants", name: "PANTS", tagline: "Comfort meets style.", image: pantsImg.url },
-  { slug: "gadgets", name: "GADGETS", tagline: "Smart choices. Better living.", image: gadgetImg.url },
-  { slug: "sunglasses", name: "SUNGLASSES", tagline: "See the difference.", image: sunglassesImg.url },
+  { slug: "shirts", name: "SHIRTS", tagline: "Classic fits. Modern looks.", image: blueMotorsportShirt },
+  { slug: "pants", name: "PANTS", tagline: "Comfort meets style.", image: pantsImg },
+  { slug: "gadgets", name: "GADGETS", tagline: "Smart choices. Better living.", image: gadgetImg },
+  { slug: "sunglasses", name: "SUNGLASSES", tagline: "See the difference.", image: sunglassesImg },
 ];
 
 export type Product = {

@@ -3,7 +3,7 @@ import type { Product } from "./shop";
 import { toProduct } from "./products.functions";
 
 export type AdminProductInput = {
-  id?: string;
+  id?: string | undefined;
   name: string;
   category: string;
   price: number;
