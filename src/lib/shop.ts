@@ -25,10 +25,10 @@ export const CATEGORIES: {
   tagline: string;
   image: string;
 }[] = [
-  { slug: "shirts", name: "SHIRTS", tagline: "Classic fits. Modern looks.", image: blueMotorsportShirt.url },
-  { slug: "pants", name: "PANTS", tagline: "Comfort meets style.", image: pantsImg.url },
-  { slug: "gadgets", name: "GADGETS", tagline: "Smart choices. Better living.", image: gadgetImg.url },
-  { slug: "sunglasses", name: "SUNGLASSES", tagline: "See the difference.", image: sunglassesImg.url },
+  { slug: "shirts", name: "SHIRTS", tagline: "Classic fits. Modern looks.", image: blueMotorsportShirt },
+  { slug: "pants", name: "PANTS", tagline: "Comfort meets style.", image: pantsImg },
+  { slug: "gadgets", name: "GADGETS", tagline: "Smart choices. Better living.", image: gadgetImg },
+  { slug: "sunglasses", name: "SUNGLASSES", tagline: "See the difference.", image: sunglassesImg },
 ];
 
 export type Product = {

@@ -14,13 +14,13 @@ export const Route = createFileRoute("/chapters")({
 });
 
 const C = [
-  ["The Purpose", "SIH Wears exists for men who dress with intent. Every piece is chosen to feel considered — never loud, never disposable.", poster.url],
-  ["The Style Identity", "Monochrome discipline with one sharp accent. Streetwear energy held inside an editorial frame, so the clothes read premium anywhere.", mannequin.url],
-  ["The Quality", "Heavier cotton, clean stitching, prints that survive the wash. We would rather carry a small collection we trust than a large one we do not.", white.url],
-  ["The Modern Fit", "Cut to sit straight on the shoulders with room through the body — a relaxed, current silhouette that still looks sharp tucked or loose.", grey.url],
-  ["Real Product Imagery", "Every shirt you see is photographed as it ships. No borrowed stock photos, no retouched colours — what is on screen is what arrives.", blue.url],
-  ["Ordering & Payment", "Pick your pieces, fill in four details and your order is confirmed over WhatsApp. Pay cash on delivery or by NayaPay — no accounts, no hidden fees.", red.url],
-  ["The 3-Day Promise", "If a piece is not right, message us within three days of delivery and we will make it right. Buying from us should never feel like a risk.", poster.url],
+  ["The Purpose", "SIH Wears exists for men who dress with intent. Every piece is chosen to feel considered — never loud, never disposable.", poster],
+  ["The Style Identity", "Monochrome discipline with one sharp accent. Streetwear energy held inside an editorial frame, so the clothes read premium anywhere.", mannequin],
+  ["The Quality", "Heavier cotton, clean stitching, prints that survive the wash. We would rather carry a small collection we trust than a large one we do not.", white],
+  ["The Modern Fit", "Cut to sit straight on the shoulders with room through the body — a relaxed, current silhouette that still looks sharp tucked or loose.", grey],
+  ["Real Product Imagery", "Every shirt you see is photographed as it ships. No borrowed stock photos, no retouched colours — what is on screen is what arrives.", blue],
+  ["Ordering & Payment", "Pick your pieces, fill in four details and your order is confirmed over WhatsApp. Pay cash on delivery or by NayaPay — no accounts, no hidden fees.", red],
+  ["The 3-Day Promise", "If a piece is not right, message us within three days of delivery and we will make it right. Buying from us should never feel like a risk.", poster],
 ];
 
 function Chapters() {

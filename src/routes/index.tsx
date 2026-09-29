@@ -58,7 +58,7 @@ function Index() {
 
         <section className="page-shell section-space grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
           <div className="rounded-sm bg-soft p-6 sm:p-10">
-            <img src={mannequin.url} alt="SIH WEARS signature tee" loading="lazy" className="mx-auto max-h-[520px] w-full object-contain" />
+            <img src={mannequin} alt="SIH WEARS signature tee" loading="lazy" className="mx-auto max-h-[520px] w-full object-contain" />
           </div>
           <div>
             <p className="eyebrow">About SIH WEARS</p>
