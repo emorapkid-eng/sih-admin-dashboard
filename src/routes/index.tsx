@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Headphones, RotateCcw, ShieldCheck, Truck, Instagram, Facebook } from "lucide-react";
+import { ArrowRight, Headphones, RotateCcw, ShieldCheck, Truck, Instagram, Facebook, Music2, Quote, Star, Youtube } from "lucide-react";
 import { useState } from "react";
 import mannequin from "@/assets/sih-hero-mannequin.png";
 import { Hero } from "@/components/site/Hero";
@@ -9,6 +9,7 @@ import { ProductGrid, meta } from "@/components/site/Shell";
 import { Button } from "@/components/ui/button";
 import { CATEGORIES } from "@/lib/shop";
 import { useProducts } from "@/lib/products-context";
+import { Reveal } from "@/components/site/Reveal";
 
 export const Route = createFileRoute("/")({
   head: () =>
@@ -26,6 +27,12 @@ const SERVICES = [
   [Headphones, "Customer Support", "WhatsApp 0302 2281109"],
 ] as const;
 
+const REVIEWS = [
+  ["Ahsan Raza", "Lahore", "The fabric feels premium and the fit is exactly as shown. Easily one of my best online clothing purchases."],
+  ["Hamza Ali", "Karachi", "Clean finishing, quick delivery and genuinely good quality. The shirt still looks sharp after several washes."],
+  ["Saad Ahmed", "Islamabad", "The order process was simple and the sizing guidance was accurate. SIH has become my go-to for everyday pieces."],
+] as const;
+
 function Index() {
   const products = useProducts();
   const [sent, setSent] = useState(false);
@@ -34,7 +41,7 @@ function Index() {
       <Hero />
       <main>
         <section className="page-shell section-space">
-          <div className="mb-8 flex items-end justify-between gap-4">
+          <Reveal className="mb-8 flex items-end justify-between gap-4">
             <div>
               <p className="eyebrow">New in</p>
               <h2 className="mt-2 text-3xl font-extrabold uppercase leading-none sm:text-4xl">Latest Arrivals</h2>
@@ -42,14 +49,16 @@ function Index() {
             <Link to="/shop" className="inline-flex shrink-0 items-center gap-2 border-b-2 border-foreground pb-1 text-[0.68rem] font-bold uppercase">
               View all <ArrowRight size={14} />
             </Link>
-          </div>
+          </Reveal>
           <ProductGrid products={products.slice(0, 8)} />
         </section>
 
         <section className="border-y-2 border-foreground bg-contrast text-contrast-foreground">
           <div className="page-shell section-space">
+            <Reveal>
             <p className="eyebrow text-contrast-foreground/70">Categories</p>
             <h2 className="mb-8 mt-2 text-3xl font-extrabold uppercase leading-none sm:text-4xl">Find Your Style</h2>
+            </Reveal>
             <div className="grid gap-3 sm:grid-cols-2 sm:gap-5 lg:grid-cols-4">
               {CATEGORIES.map((c) => <CategoryCard key={c.slug} category={c} />)}
             </div>
@@ -57,10 +66,10 @@ function Index() {
         </section>
 
         <section className="page-shell section-space grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
-          <div className="border border-foreground bg-soft p-6 sm:p-10">
+          <Reveal className="border border-foreground bg-soft p-6 sm:p-10">
             <img src={mannequin} alt="SIH WEARS signature tee" loading="lazy" className="mx-auto max-h-[520px] w-full object-contain" />
-          </div>
-          <div>
+          </Reveal>
+          <Reveal delay={1}>
             <p className="eyebrow">About SIH WEARS</p>
             <h2 className="mt-3 text-3xl font-extrabold uppercase leading-[0.95] sm:text-5xl">Built for men who refuse to compromise</h2>
             <p className="mt-5 max-w-lg text-sm leading-7 text-muted-foreground sm:text-base">
@@ -70,20 +79,34 @@ function Index() {
               <Button asChild><Link to="/about">Our Story</Link></Button>
               <Button asChild variant="outline"><Link to="/chapters">Seven Chapters</Link></Button>
             </div>
-          </div>
+          </Reveal>
         </section>
 
         <section className="border-y-2 border-foreground">
           <div className="page-shell grid grid-cols-2 lg:grid-cols-4">
             {SERVICES.map(([Icon, t, d], i) => (
-              <div key={t} className={`flex flex-col items-start gap-3 py-8 sm:flex-row sm:items-center sm:px-4 ${i % 2 ? "pl-4 border-l" : "pr-4"} ${i > 1 ? "border-t lg:border-t-0" : ""} ${i === 2 ? "lg:border-l lg:pl-4" : ""}`}>
-                <Icon size={24} strokeWidth={1.3} className="shrink-0" />
+              <Reveal key={t} delay={(i % 4) as 0 | 1 | 2 | 3} className={`h-full ${i % 2 ? "border-l pl-4" : "pr-4"} ${i > 1 ? "border-t lg:border-t-0" : ""} ${i === 2 ? "lg:border-l lg:pl-4" : ""}`}>
+              <div className="group flex h-full flex-col items-start gap-3 py-8 sm:flex-row sm:items-center sm:px-4">
+                <span className="grid h-11 w-11 shrink-0 place-items-center border border-foreground transition-colors duration-300 group-hover:bg-primary group-hover:text-primary-foreground"><Icon size={21} strokeWidth={1.4} /></span>
                 <div className="min-w-0">
                   <h3 className="text-xs font-bold uppercase">{t}</h3>
                   <p className="mt-1 text-xs text-muted-foreground">{d}</p>
                 </div>
               </div>
+              </Reveal>
             ))}
+          </div>
+        </section>
+
+        <section className="border-b-2 border-foreground bg-contrast text-contrast-foreground">
+          <div className="page-shell section-space">
+            <Reveal className="flex flex-col justify-between gap-5 border-b border-contrast-foreground/40 pb-7 sm:flex-row sm:items-end">
+              <div><p className="eyebrow text-contrast-foreground/65">Customer notes</p><h2 className="mt-2 text-3xl font-extrabold uppercase leading-none sm:text-5xl">Worn &amp; Rated</h2></div>
+              <div className="flex gap-1" aria-label="Five out of five stars">{Array.from({length:5}).map((_,i)=><Star key={i} size={15} fill="currentColor"/>)}</div>
+            </Reveal>
+            <div className="grid md:grid-cols-3">
+              {REVIEWS.map(([name,city,review],index)=><Reveal key={name} delay={(index % 3) as 0 | 1 | 2} className={`py-8 md:px-7 md:py-10 ${index ? "border-t border-contrast-foreground/30 md:border-l md:border-t-0" : ""}`}><Quote size={24} strokeWidth={1.3}/><blockquote className="mt-7 text-lg font-semibold leading-7">“{review}”</blockquote><div className="mt-8 border-t border-contrast-foreground/30 pt-4"><p className="text-xs font-bold uppercase">{name}</p><p className="mt-1 text-xs text-contrast-foreground/60">{city}</p></div></Reveal>)}
+            </div>
           </div>
         </section>
 
@@ -100,8 +123,7 @@ function Index() {
             </form>
           )}
           <div className="mt-8 flex justify-center gap-2">
-            <a href="https://www.instagram.com/" target="_blank" rel="noreferrer" aria-label="Instagram" className="grid h-10 w-10 place-items-center border border-foreground transition-colors hover:bg-primary hover:text-primary-foreground"><Instagram size={16} strokeWidth={1.5} /></a>
-            <a href="https://www.facebook.com/" target="_blank" rel="noreferrer" aria-label="Facebook" className="grid h-10 w-10 place-items-center border border-foreground transition-colors hover:bg-primary hover:text-primary-foreground"><Facebook size={16} strokeWidth={1.5} /></a>
+            {[[Instagram,"Instagram","https://www.instagram.com/sih.wears.official"],[Facebook,"Facebook","https://www.facebook.com/SIHWearsofficial"],[Youtube,"YouTube","https://www.youtube.com/@sihwears"],[Music2,"TikTok","https://www.tiktok.com/@sih.wears.official"]] .map(([Icon,label,href])=><a key={String(label)} href={String(href)} target="_blank" rel="noreferrer" aria-label={String(label)} title={String(label)} className="grid h-10 w-10 place-items-center border border-foreground transition-colors hover:bg-primary hover:text-primary-foreground">{typeof Icon !== "string" && <Icon size={16} strokeWidth={1.5}/>}</a>)}
           </div>
         </section>
       </main>

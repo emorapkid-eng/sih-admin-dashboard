@@ -1,8 +1,6 @@
 # Roadmap
 
-- [ ] Import and preserve SIH WEARS assets, products, branding, and checkout facts
-- [ ] Build the warm-white shared design system, header, cart drawer, and footer
-- [ ] Build the complete premium homepage
-- [ ] Create Shop, Shirts, Pants, Gadgets, Sunglasses, and product detail routes
-- [ ] Create About, Contact, Cart, Checkout, Categories, and Chapters routes
-- [ ] Verify metadata, mobile layout, navigation, cart, and checkout behavior
+- [x] Preserve SIH WEARS products, media, branding, checkout, and admin behavior
+- [ ] Refine the main storefront and inner-page editorial presentation
+- [ ] Add customer reviews, official social links, and scroll motion
+- [ ] Verify desktop/mobile layouts, hero video, and all product imagery
