@@ -8,3 +8,5 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Use the shared `Reveal` component for one-time viewport motion; it respects reduced-motion settings and avoids adding an animation dependency.
