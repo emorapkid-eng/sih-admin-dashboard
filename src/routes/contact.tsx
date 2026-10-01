@@ -4,6 +4,7 @@ import { PageIntro } from "@/components/site/PageIntro";
 import { Shell, meta } from "@/components/site/Shell";
 import { Button } from "@/components/ui/button";
 import { STORE } from "@/lib/shop";
+import { Reveal } from "@/components/site/Reveal";
 
 export const Route = createFileRoute("/contact")({
   head: () => meta("Contact — SIH WEARS", "Get in touch with SIH Wears about orders, sizing, returns and NayaPay payments."),
@@ -24,21 +25,21 @@ function Contact() {
     <Shell>
       <PageIntro eyebrow="Contact" title="Get In Touch" />
       <section className="page-shell section-space">
-        <div className="grid gap-px border bg-border sm:grid-cols-2 lg:grid-cols-4">
-          {cards.map(([t, d]) => (
-            <div key={t} className="bg-background p-6 sm:p-8">
+        <div className="grid border border-foreground sm:grid-cols-2 lg:grid-cols-4">
+          {cards.map(([t, d], index) => (
+            <Reveal key={t} delay={(index % 4) as 0 | 1 | 2 | 3} className={`bg-background p-6 sm:p-8 ${index ? "border-t border-foreground sm:border-l sm:border-t-0" : ""} ${index === 2 ? "sm:border-l-0 lg:border-l" : ""}`}>
               <p className="eyebrow">{t}</p>
               <div className="mt-3 text-sm text-muted-foreground">{d}</div>
-            </div>
+            </Reveal>
           ))}
         </div>
-        <form className="mt-12 max-w-xl space-y-5" onSubmit={(e) => { e.preventDefault(); e.currentTarget.reset(); setSent(true); }}>
+        <Reveal><form className="mt-12 max-w-xl space-y-5 border-t-2 border-foreground pt-8" onSubmit={(e) => { e.preventDefault(); e.currentTarget.reset(); setSent(true); }}>
           <div><label className="eyebrow" htmlFor="name">Full name</label><input required id="name" className={input} /></div>
           <div><label className="eyebrow" htmlFor="contact">Email or phone</label><input required id="contact" className={input} /></div>
           <div><label className="eyebrow" htmlFor="message">Message</label><textarea required id="message" rows={5} className={input} /></div>
           <Button type="submit" size="lg">Send Message</Button>
           {sent && <p className="text-sm">Thank you — we'll get back to you soon.</p>}
-        </form>
+        </form></Reveal>
       </section>
     </Shell>
   );
