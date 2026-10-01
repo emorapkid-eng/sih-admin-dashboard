@@ -3,6 +3,7 @@ import mannequin from "@/assets/sih-hero-mannequin.png";
 import { PageIntro } from "@/components/site/PageIntro";
 import { Shell, meta } from "@/components/site/Shell";
 import { Button } from "@/components/ui/button";
+import { Reveal } from "@/components/site/Reveal";
 
 export const Route = createFileRoute("/about")({
   head: () => meta("About — SIH WEARS", "SIH Wears builds premium menswear essentials — modern fits, honest quality, no compromise."),
@@ -14,7 +15,7 @@ function About() {
     <Shell>
       <PageIntro eyebrow="About" title="Built for men who refuse to compromise" />
       <section className="page-shell section-space grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
-        <div className="space-y-5 text-sm leading-7 text-muted-foreground sm:text-base">
+        <Reveal className="space-y-5 text-sm leading-7 text-muted-foreground sm:text-base">
           <p>SIH Wears is a monochrome menswear label built around a single idea: your wardrobe should work as hard as you do. Every piece is cut for modern proportions and finished to last past a single season.</p>
           <p>We keep the range tight and the standards high — heavyweight fabrics, considered graphics, and accessories that complete the look rather than compete with it.</p>
           <dl className="grid gap-px border bg-border sm:grid-cols-3">
@@ -30,10 +31,10 @@ function About() {
             <Button asChild><Link to="/shop">Shop Collection</Link></Button>
             <Button asChild variant="outline"><Link to="/chapters">Seven Chapters</Link></Button>
           </div>
-        </div>
-        <div className="rounded-sm bg-soft p-6 sm:p-10">
+        </Reveal>
+        <Reveal delay={1} className="border border-foreground bg-soft p-6 sm:p-10">
           <img src={mannequin} alt="SIH Wears signature tee" className="mx-auto max-h-[560px] w-full object-contain" loading="lazy" />
-        </div>
+        </Reveal>
       </section>
     </Shell>
   );

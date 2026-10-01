@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Headphones, RotateCcw, ShieldCheck, Truck, Instagram, Facebook, Music2, Quote, Star, Youtube } from "lucide-react";
+import { ArrowRight, Headphones, RotateCcw, ShieldCheck, Truck, Instagram, Facebook, Mail, Music2, Quote, Star, Youtube, type LucideIcon } from "lucide-react";
 import { useState } from "react";
 import mannequin from "@/assets/sih-hero-mannequin.png";
 import { Hero } from "@/components/site/Hero";
@@ -31,7 +31,16 @@ const REVIEWS = [
   ["Ahsan Raza", "Lahore", "The fabric feels premium and the fit is exactly as shown. Easily one of my best online clothing purchases."],
   ["Hamza Ali", "Karachi", "Clean finishing, quick delivery and genuinely good quality. The shirt still looks sharp after several washes."],
   ["Saad Ahmed", "Islamabad", "The order process was simple and the sizing guidance was accurate. SIH has become my go-to for everyday pieces."],
+  ["Danish Khan", "Rawalpindi", "The details feel considered, from the packaging to the finishing. It looks even better in person."],
 ] as const;
+
+const SOCIALS: readonly (readonly [LucideIcon, string, string])[] = [
+  [Instagram, "Instagram", "https://www.instagram.com/sih.wears.official"],
+  [Facebook, "Facebook", "https://www.facebook.com/SIHWearsofficial"],
+  [Youtube, "YouTube", "https://www.youtube.com/@sihwears"],
+  [Music2, "TikTok", "https://www.tiktok.com/@sih.wears.official"],
+  [Mail, "Email", "mailto:sih.wears@gmail.com"],
+];
 
 function Index() {
   const products = useProducts();
@@ -82,7 +91,13 @@ function Index() {
           </Reveal>
         </section>
 
-        <section className="border-y-2 border-foreground">
+        <section className="border-y-2 border-foreground" aria-labelledby="brand-standards">
+          <div className="page-shell border-b border-foreground py-5">
+            <Reveal className="flex items-end justify-between gap-6">
+              <div><p className="eyebrow">The SIH standard</p><h2 id="brand-standards" className="mt-2 text-2xl font-extrabold uppercase leading-none sm:text-3xl">Designed with intent</h2></div>
+              <p className="hidden max-w-sm text-right text-xs leading-5 text-muted-foreground sm:block">Four principles behind every order.</p>
+            </Reveal>
+          </div>
           <div className="page-shell grid grid-cols-2 lg:grid-cols-4">
             {SERVICES.map(([Icon, t, d], i) => (
               <Reveal key={t} delay={(i % 4) as 0 | 1 | 2 | 3} className={`h-full ${i % 2 ? "border-l pl-4" : "pr-4"} ${i > 1 ? "border-t lg:border-t-0" : ""} ${i === 2 ? "lg:border-l lg:pl-4" : ""}`}>
@@ -98,14 +113,14 @@ function Index() {
           </div>
         </section>
 
-        <section className="border-b-2 border-foreground bg-contrast text-contrast-foreground">
+        <section className="border-b-2 border-foreground bg-contrast text-contrast-foreground" aria-labelledby="customer-reviews">
           <div className="page-shell section-space">
             <Reveal className="flex flex-col justify-between gap-5 border-b border-contrast-foreground/40 pb-7 sm:flex-row sm:items-end">
-              <div><p className="eyebrow text-contrast-foreground/65">Customer notes</p><h2 className="mt-2 text-3xl font-extrabold uppercase leading-none sm:text-5xl">Worn &amp; Rated</h2></div>
+              <div><p className="eyebrow text-contrast-foreground/65">What they say</p><h2 id="customer-reviews" className="mt-2 text-3xl font-extrabold uppercase leading-none sm:text-5xl">Customer Reviews</h2></div>
               <div className="flex gap-1" aria-label="Five out of five stars">{Array.from({length:5}).map((_,i)=><Star key={i} size={15} fill="currentColor"/>)}</div>
             </Reveal>
-            <div className="grid md:grid-cols-3">
-              {REVIEWS.map(([name,city,review],index)=><Reveal key={name} delay={(index % 3) as 0 | 1 | 2} className={`py-8 md:px-7 md:py-10 ${index ? "border-t border-contrast-foreground/30 md:border-l md:border-t-0" : ""}`}><Quote size={24} strokeWidth={1.3}/><blockquote className="mt-7 text-lg font-semibold leading-7">“{review}”</blockquote><div className="mt-8 border-t border-contrast-foreground/30 pt-4"><p className="text-xs font-bold uppercase">{name}</p><p className="mt-1 text-xs text-contrast-foreground/60">{city}</p></div></Reveal>)}
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4">
+              {REVIEWS.map(([name,city,review],index)=><Reveal key={name} delay={(index % 4) as 0 | 1 | 2 | 3} className={`flex h-full flex-col py-8 sm:px-6 sm:py-9 ${index ? "border-t border-contrast-foreground/30 sm:border-l sm:border-t-0" : ""} ${index === 2 ? "sm:border-l-0 lg:border-l" : ""}`}><div className="flex items-center justify-between"><Quote size={21} strokeWidth={1.3}/><div className="flex gap-0.5" aria-label="Five out of five stars">{Array.from({length:5}).map((_,i)=><Star key={i} size={11} fill="currentColor"/>)}</div></div><blockquote className="mt-6 flex-1 text-base font-semibold leading-7">“{review}”</blockquote><div className="mt-7 border-t border-contrast-foreground/30 pt-4"><p className="text-xs font-bold uppercase">{name}</p><p className="mt-1 text-xs text-contrast-foreground/60">{city}</p></div></Reveal>)}
             </div>
           </div>
         </section>
@@ -123,7 +138,7 @@ function Index() {
             </form>
           )}
           <div className="mt-8 flex justify-center gap-2">
-            {[[Instagram,"Instagram","https://www.instagram.com/sih.wears.official"],[Facebook,"Facebook","https://www.facebook.com/SIHWearsofficial"],[Youtube,"YouTube","https://www.youtube.com/@sihwears"],[Music2,"TikTok","https://www.tiktok.com/@sih.wears.official"]] .map(([Icon,label,href])=><a key={String(label)} href={String(href)} target="_blank" rel="noreferrer" aria-label={String(label)} title={String(label)} className="grid h-10 w-10 place-items-center border border-foreground transition-colors hover:bg-primary hover:text-primary-foreground">{typeof Icon !== "string" && <Icon size={16} strokeWidth={1.5}/>}</a>)}
+            {SOCIALS.map(([Icon,label,href])=><a key={label} href={href} target={href.startsWith("mailto:") ? undefined : "_blank"} rel={href.startsWith("mailto:") ? undefined : "noreferrer"} aria-label={label} title={label} className="grid h-10 w-10 place-items-center border border-foreground transition-colors hover:bg-primary hover:text-primary-foreground"><Icon size={16} strokeWidth={1.5}/></a>)}
           </div>
         </section>
       </main>

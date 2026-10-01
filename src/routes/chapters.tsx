@@ -7,6 +7,7 @@ import grey from "@/assets/sih-grey-mountain-shirt.jpeg";
 import white from "@/assets/sih-white-essential-shirt.jpeg";
 import { PageIntro } from "@/components/site/PageIntro";
 import { Shell, meta } from "@/components/site/Shell";
+import { Reveal } from "@/components/site/Reveal";
 
 export const Route = createFileRoute("/chapters")({
   head: () => meta("The Seven Chapters — SIH WEARS", "The story, standards and promises behind every SIH Wears piece."),
@@ -28,14 +29,14 @@ function Chapters() {
     <Shell>
       <PageIntro eyebrow="SIH WEARS" title="The Seven Chapters" copy="The standards, the making and the promises behind every piece we send out." />
       {C.map(([t, b, img], i) => (
-        <section key={t} className="border-b">
+        <section key={t} className={`border-b-2 border-foreground ${i % 2 ? "bg-contrast text-contrast-foreground" : "bg-background"}`}>
           <div className="page-shell section-space grid items-center gap-8 lg:grid-cols-2 lg:gap-14">
-            <img src={img} alt={t} loading="lazy" className={`h-80 w-full rounded-sm bg-soft object-cover md:h-[440px] ${i % 2 ? "lg:order-2" : ""}`} />
-            <div className="max-w-xl">
-              <p className="eyebrow">Chapter 0{i + 1}</p>
-              <h2 className="mt-3 text-3xl font-semibold uppercase">{t}</h2>
-              <p className="mt-4 text-sm leading-7 text-muted-foreground">{b}</p>
-            </div>
+            <Reveal className={`border ${i % 2 ? "border-contrast-foreground/40" : "border-foreground"} ${i % 2 ? "lg:order-2" : ""}`}><img src={img} alt={t} loading="lazy" decoding="async" className="h-80 w-full bg-soft object-cover md:h-[440px]" /></Reveal>
+            <Reveal delay={1} className="max-w-xl">
+              <p className={`eyebrow ${i % 2 ? "text-contrast-foreground/65" : ""}`}>Chapter 0{i + 1}</p>
+              <h2 className="mt-3 text-3xl font-extrabold uppercase leading-none sm:text-4xl">{t}</h2>
+              <p className={`mt-5 text-sm leading-7 ${i % 2 ? "text-contrast-foreground/70" : "text-muted-foreground"}`}>{b}</p>
+            </Reveal>
           </div>
         </section>
       ))}
