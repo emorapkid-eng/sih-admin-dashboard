@@ -48,6 +48,7 @@ function Index() {
   return (
     <>
       <Hero />
+      <MarqueeBar />
       <main>
         <section className="page-shell section-space">
           <Reveal className="mb-8 flex items-end justify-between gap-4">
