@@ -42,6 +42,34 @@ const SOCIALS: readonly (readonly [LucideIcon, string, string])[] = [
   [Mail, "Email", "mailto:sih.wears@gmail.com"],
 ];
 
+const TICKER = ["SIH WEARS", "NEW DROP", "PREMIUM MENSWEAR", "EST. 2026", "WEAR YOUR STYLE", "3-DAY RETURNS"] as const;
+
+function TickerGroup({ hidden }: { hidden?: boolean }) {
+  return (
+    <div className="flex shrink-0 items-center" aria-hidden={hidden || undefined}>
+      {[0, 1, 2].map((r) =>
+        TICKER.map((t, i) => (
+          <span key={`${r}-${i}`} className="flex items-center whitespace-nowrap text-[0.68rem] font-bold uppercase tracking-[0.22em] sm:text-xs">
+            {t}
+            <span className="mx-7 text-contrast-foreground/40 sm:mx-10">/</span>
+          </span>
+        )),
+      )}
+    </div>
+  );
+}
+
+function MarqueeBar() {
+  return (
+    <div className="overflow-hidden border-b-2 border-foreground bg-contrast py-3 text-contrast-foreground sm:py-3.5" aria-label="SIH WEARS announcement">
+      <div className="marquee-track">
+        <TickerGroup />
+        <TickerGroup hidden />
+      </div>
+    </div>
+  );
+}
+
 function Index() {
   const products = useProducts();
   const [sent, setSent] = useState(false);

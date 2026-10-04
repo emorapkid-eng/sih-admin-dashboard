@@ -103,6 +103,7 @@
 .scroll-reveal.is-visible { opacity: 1; transform: translateY(0); }
 .editorial-rule { position: relative; }
 .editorial-rule::before { content: ""; position: absolute; inset: 0 auto 0 0; width: 0.25rem; background: var(--color-foreground); }
+.marquee-track { display: flex; width: max-content; animation: marquee-right 34s linear infinite; will-change: transform; }
 
 @media (min-width: 640px) { .page-shell { padding-inline: 1.5rem; } }
 @media (min-width: 1024px) { .page-shell { padding-inline: 2.5rem; } .section-space { padding-block: 5.5rem; } }
