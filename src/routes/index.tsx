@@ -78,17 +78,23 @@ function Index() {
       <Hero />
       <MarqueeBar />
       <main>
-        <section className="page-shell section-space">
-          <Reveal className="mb-8 flex items-end justify-between gap-4">
-            <div>
-              <p className="eyebrow">New in</p>
-              <h2 className="mt-2 text-3xl font-extrabold uppercase leading-none sm:text-4xl">Latest Arrivals</h2>
-            </div>
-            <Link to="/shop" className="inline-flex shrink-0 items-center gap-2 border-b-2 border-foreground pb-1 text-[0.68rem] font-bold uppercase">
-              View all <ArrowRight size={14} />
-            </Link>
-          </Reveal>
-          <ProductGrid products={products.slice(0, 8)} />
+        <section className="border-b-2 border-foreground bg-background">
+          <div className="border-b-2 border-foreground">
+            <Reveal className="page-shell grid grid-cols-[4.5rem_minmax(0,1fr)] items-stretch sm:grid-cols-[7rem_minmax(0,1fr)_auto]">
+              <div className="flex items-center justify-center border-x-2 border-foreground bg-primary px-2 py-7 text-center text-[0.65rem] font-bold uppercase text-primary-foreground sm:py-9 sm:text-xs">
+                New in
+              </div>
+              <div className="flex min-w-0 items-center border-r-2 border-foreground px-4 py-7 sm:px-7 sm:py-9">
+                <h2 className="text-2xl font-extrabold uppercase leading-none sm:text-4xl">Latest Arrivals</h2>
+              </div>
+              <Link to="/shop" className="col-span-2 flex min-h-12 items-center justify-between border-x-2 border-t-2 border-foreground px-4 text-[0.68rem] font-bold uppercase transition-colors hover:bg-primary hover:text-primary-foreground sm:col-span-1 sm:border-l-0 sm:border-t-0 sm:px-7">
+                View all <ArrowRight size={15} />
+              </Link>
+            </Reveal>
+          </div>
+          <div className="page-shell py-10 sm:py-14 lg:py-16">
+            <ProductGrid products={products.slice(0, 8)} />
+          </div>
         </section>
 
         <section className="border-y-2 border-foreground bg-contrast text-contrast-foreground">
