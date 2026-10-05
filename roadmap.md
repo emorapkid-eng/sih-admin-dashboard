@@ -4,3 +4,4 @@
 - [x] Refine the main storefront and inner-page editorial presentation
 - [x] Add customer reviews, official social links, and scroll motion
 - [x] Verify desktop/mobile layouts, hero video, and all product imagery
+- [x] Refine the homepage header and post-marquee transition
