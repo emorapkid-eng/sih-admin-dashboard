@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Headphones, RotateCcw, ShieldCheck, Truck, Instagram, Facebook, Mail, Music2, Quote, Star, Youtube, type LucideIcon } from "lucide-react";
 import { useState } from "react";
 import mannequin from "@/assets/sih-hero-mannequin.png";
+import grittyBackdrop from "@/assets/gritty-backdrop.png.asset.json";
 import { Hero } from "@/components/site/Hero";
 import { Footer } from "@/components/site/Footer";
 import { CategoryCard } from "@/components/site/CategoryCard";
@@ -97,8 +98,10 @@ function Index() {
           </div>
         </section>
 
-        <section className="border-y-2 border-foreground bg-contrast text-contrast-foreground">
-          <div className="page-shell section-space">
+        <section className="relative border-y-2 border-foreground bg-contrast text-contrast-foreground">
+          <img src={grittyBackdrop.url} alt="" aria-hidden="true" loading="lazy" className="absolute inset-0 h-full w-full object-cover object-center" />
+          <div className="absolute inset-0 bg-black/60" aria-hidden="true" />
+          <div className="relative page-shell section-space">
             <Reveal>
             <p className="eyebrow text-contrast-foreground/70">Categories</p>
             <h2 className="mb-8 mt-2 text-3xl font-extrabold uppercase leading-none sm:text-4xl">Find Your Style</h2>
