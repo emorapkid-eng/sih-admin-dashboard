@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Headphones, RotateCcw, ShieldCheck, Truck, Instagram, Facebook, Mail, Music2, Quote, Star, Youtube, type LucideIcon } from "lucide-react";
 import { useState } from "react";
-import mannequin from "@/assets/sih-hero-mannequin.png";
+import storyImage from "@/assets/sih-story.png.asset.json";
 import grittyBackdrop from "@/assets/gritty-backdrop.png.asset.json";
 import { Hero } from "@/components/site/Hero";
 import { Footer } from "@/components/site/Footer";
@@ -113,8 +113,8 @@ function Index() {
         </section>
 
         <section className="page-shell section-space grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
-          <Reveal className="border border-foreground bg-soft p-6 sm:p-10">
-            <img src={mannequin} alt="SIH WEARS signature tee" loading="lazy" className="mx-auto max-h-[520px] w-full object-contain" />
+          <Reveal className="border border-foreground bg-contrast p-0">
+            <img src={storyImage.url} alt="The SIH WEARS story" loading="lazy" className="aspect-[3/2] w-full object-cover" />
           </Reveal>
           <Reveal delay={1}>
             <p className="eyebrow">About SIH WEARS</p>
