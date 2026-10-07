@@ -18,9 +18,9 @@ export function Header({ overlay = false }: { overlay?: boolean }) {
   const navigate = useNavigate();
   const tone = "text-foreground";
   return <header className={overlay ? "absolute inset-x-0 top-0 z-40 border-b-2 border-foreground bg-background text-foreground" : "sticky top-0 z-40 border-b-2 border-foreground bg-background/95 backdrop-blur-xl"}>
-    <div className={`page-shell grid h-16 grid-cols-[minmax(0,1fr)_auto] items-center gap-3 sm:flex sm:h-[4.5rem] ${tone}`}>
+    <div className={`page-shell grid h-16 grid-cols-[minmax(0,1fr)_auto] items-center gap-3 sm:flex sm:h-20 ${tone}`}>
       <Link to="/" className="flex min-w-0 items-center" aria-label="SIH WEARS home">
-        <img src={logo} alt="SIH WEARS" className="h-11 w-auto shrink-0 object-contain sm:h-14" />
+        <img src={logo} alt="SIH WEARS" className="h-12 w-auto shrink-0 object-contain sm:h-16" />
       </Link>
       <nav className="ml-auto hidden min-w-0 items-center gap-5 xl:flex">
         {NAV.map(([label,to]) => <Link key={to} to={to} activeOptions={{exact:to==="/"}} className="border-b-2 border-transparent py-2 text-[0.68rem] font-bold uppercase opacity-70 transition hover:opacity-100" activeProps={{className:"opacity-100 border-current"}}>{label}</Link>)}
