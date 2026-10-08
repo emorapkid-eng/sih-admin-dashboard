@@ -274,11 +274,12 @@ function Index() {
           <div className="page-shell section-space">
             <Reveal className="flex flex-col justify-between gap-5 border-b border-contrast-foreground/40 pb-7 sm:flex-row sm:items-end">
               <div><p className="eyebrow text-contrast-foreground/65">What they say</p><h2 id="customer-reviews" className="mt-2 text-3xl font-extrabold uppercase leading-none sm:text-5xl">Customer Reviews</h2></div>
-              <div className="flex gap-1" aria-label="Five out of five stars">{Array.from({length:5}).map((_,i)=><Star key={i} size={15} fill="currentColor"/>)}</div>
+              <div className="flex items-center gap-3">
+                <div className="flex gap-1" aria-label="Five out of five stars">{Array.from({length:5}).map((_,i)=><Star key={i} size={15} fill="currentColor"/>)}</div>
+                <span className="text-xs font-bold uppercase tracking-[0.2em] text-contrast-foreground/60">5.0 Rated</span>
+              </div>
             </Reveal>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4">
-              {REVIEWS.map(([name,city,review],index)=><Reveal key={name} delay={(index % 4) as 0 | 1 | 2 | 3} className={`flex h-full flex-col py-8 sm:px-6 sm:py-9 ${index ? "border-t border-contrast-foreground/30 sm:border-l sm:border-t-0" : ""} ${index === 2 ? "sm:border-l-0 lg:border-l" : ""}`}><div className="flex items-center justify-between"><Quote size={21} strokeWidth={1.3}/><div className="flex gap-0.5" aria-label="Five out of five stars">{Array.from({length:5}).map((_,i)=><Star key={i} size={11} fill="currentColor"/>)}</div></div><blockquote className="mt-6 flex-1 text-base font-semibold leading-7">“{review}”</blockquote><div className="mt-7 border-t border-contrast-foreground/30 pt-4"><p className="text-xs font-bold uppercase">{name}</p><p className="mt-1 text-xs text-contrast-foreground/60">{city}</p></div></Reveal>)}
-            </div>
+            <ReviewSlider />
           </div>
         </section>
 
