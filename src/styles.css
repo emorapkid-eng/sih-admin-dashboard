@@ -106,6 +106,7 @@
 .social-ig:hover { border-color: transparent; color: #fff; background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
 .social-tt:hover { border-color: transparent; color: #fff; background: linear-gradient(45deg, #25f4ee, #fe2c55); }
 .marquee-track { display: flex; width: max-content; animation: marquee-right 34s linear infinite; will-change: transform; }
+.review-track { transition: transform 700ms cubic-bezier(0.65, 0, 0.35, 1); will-change: transform; }
 
 @media (min-width: 640px) { .page-shell { padding-inline: 1.5rem; } }
 @media (min-width: 1024px) { .page-shell { padding-inline: 2.5rem; } .section-space { padding-block: 5.5rem; } }
