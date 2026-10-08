@@ -76,6 +76,120 @@ function MarqueeBar() {
   );
 }
 
+function ReviewSlider() {
+  const [index, setIndex] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const count = REVIEWS.length;
+
+  useEffect(() => {
+    if (paused) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const t = setInterval(() => setIndex((i) => (i + 1) % count), 5000);
+    return () => clearInterval(t);
+  }, [paused, count]);
+
+  const go = (dir: 1 | -1) => setIndex((i) => (i + dir + count) % count);
+  const [name, city, review, avatar] = REVIEWS[index];
+
+  return (
+    <div
+      className="mt-10"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+      onFocus={() => setPaused(true)}
+      onBlur={() => setPaused(false)}
+      aria-roledescription="carousel"
+      aria-label="Customer review slideshow"
+    >
+      <div className="relative overflow-hidden border border-contrast-foreground/40">
+        <div
+          className="review-track flex"
+          style={{ transform: `translateX(-${index * 100}%)` }}
+          aria-live="polite"
+        >
+          {REVIEWS.map(([rName, rCity, rReview, rAvatar], i) => (
+            <div
+              key={rName}
+              className="w-full flex-none"
+              aria-hidden={i !== index || undefined}
+            >
+              <div className="flex flex-col sm:flex-row">
+                <div className="relative w-full shrink-0 overflow-hidden border-b border-contrast-foreground/40 sm:w-64 sm:border-b-0 sm:border-r lg:w-80">
+                  <img
+                    src={rAvatar}
+                    alt={`${rName} from ${rCity}`}
+                    loading="lazy"
+                    className={`h-56 w-full object-cover object-top grayscale transition-opacity duration-500 sm:h-full sm:min-h-[22rem] ${i === index ? "opacity-100" : "opacity-0"}`}
+                  />
+                </div>
+                <div className="flex flex-1 flex-col justify-between p-7 sm:p-10 lg:p-12">
+                  <div>
+                    <div className="flex items-center justify-between">
+                      <Quote size={26} strokeWidth={1.2} className="text-contrast-foreground/80" />
+                      <div className="flex gap-1" aria-label="Five out of five stars">
+                        {Array.from({ length: 5 }).map((_, s) => (
+                          <Star key={s} size={13} fill="currentColor" />
+                        ))}
+                      </div>
+                    </div>
+                    <blockquote className="mt-7 text-lg font-semibold leading-relaxed sm:text-2xl sm:leading-relaxed">
+                      “{rReview}”
+                    </blockquote>
+                  </div>
+                  <div className="mt-9 border-t border-contrast-foreground/40 pt-5">
+                    <p className="text-sm font-bold uppercase tracking-wide">{rName}</p>
+                    <p className="mt-1 text-xs uppercase tracking-widest text-contrast-foreground/60">{rCity}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="mt-5 flex items-center justify-between">
+        <p className="text-xs font-bold uppercase tracking-[0.25em] text-contrast-foreground/60">
+          <span className="text-contrast-foreground">{String(index + 1).padStart(2, "0")}</span>
+          <span className="mx-1.5">/</span>
+          {String(count).padStart(2, "0")}
+        </p>
+        <div className="flex items-center gap-2">
+          {REVIEWS.map((r, i) => (
+            <button
+              key={r[0]}
+              type="button"
+              onClick={() => setIndex(i)}
+              aria-label={`Show review ${i + 1} of ${count}`}
+              aria-current={i === index || undefined}
+              className={`h-0.5 w-7 transition-colors duration-300 ${i === index ? "bg-contrast-foreground" : "bg-contrast-foreground/30 hover:bg-contrast-foreground/60"}`}
+            />
+          ))}
+          <div className="ml-3 flex">
+            <button
+              type="button"
+              onClick={() => go(-1)}
+              aria-label="Previous review"
+              className="flex h-10 w-10 items-center justify-center border border-contrast-foreground/50 transition-colors duration-200 hover:bg-contrast-foreground hover:text-contrast"
+            >
+              <ChevronLeft size={17} />
+            </button>
+            <button
+              type="button"
+              onClick={() => go(1)}
+              aria-label="Next review"
+              className="flex h-10 w-10 items-center justify-center border border-l-0 border-contrast-foreground/50 transition-colors duration-200 hover:bg-contrast-foreground hover:text-contrast"
+            >
+              <ChevronRight size={17} />
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <p className="sr-only" aria-live="polite">Review by {name} from {city}</p>
+    </div>
+  );
+}
+
 function Index() {
   const products = useProducts();
   const [sent, setSent] = useState(false);
