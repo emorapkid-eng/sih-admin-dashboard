@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
-import { Mail } from "lucide-react";
+import { Instagram, Music2 } from "lucide-react";
+import { Facebook, Youtube } from "lucide-react";
 import logo from "@/assets/sih-logo.png";
 import { SocialIcon, type SocialBrand } from "@/components/site/SocialIcon";
 const shop=[["All Products","/shop"],["Shirts","/shirts"],["Pants","/pants"],["Gadgets","/gadgets"],["Sunglasses","/sunglasses"]] as const;
