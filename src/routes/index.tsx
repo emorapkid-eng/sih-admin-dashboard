@@ -1,6 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Headphones, RotateCcw, ShieldCheck, Truck, Instagram, Facebook, Mail, Music2, Quote, Star, Youtube, type LucideIcon } from "lucide-react";
-import { useState } from "react";
+import { ArrowRight, ChevronLeft, ChevronRight, Headphones, RotateCcw, ShieldCheck, Truck, Instagram, Facebook, Mail, Music2, Quote, Star, Youtube, type LucideIcon } from "lucide-react";
+import { useEffect, useState } from "react";
+import reviewAhsan from "@/assets/review-ahsan.jpg";
+import reviewHamza from "@/assets/review-hamza.jpg";
+import reviewSaad from "@/assets/review-saad.jpg";
+import reviewDanish from "@/assets/review-danish.jpg";
 import storyImage from "@/assets/sih-story.png.asset.json";
 import grittyBackdrop from "@/assets/gritty-backdrop.png.asset.json";
 import { Hero } from "@/components/site/Hero";
@@ -30,11 +34,11 @@ const SERVICES = [
 ] as const;
 
 const REVIEWS = [
-  ["Ahsan Raza", "Lahore", "The fabric feels premium and the fit is exactly as shown. Easily one of my best online clothing purchases."],
-  ["Hamza Ali", "Karachi", "Clean finishing, quick delivery and genuinely good quality. The shirt still looks sharp after several washes."],
-  ["Saad Ahmed", "Islamabad", "The order process was simple and the sizing guidance was accurate. SIH has become my go-to for everyday pieces."],
-  ["Danish Khan", "Rawalpindi", "The details feel considered, from the packaging to the finishing. It looks even better in person."],
-] as const;
+  ["Ahsan Raza", "Lahore", "The fabric feels premium and the fit is exactly as shown. Easily one of my best online clothing purchases.", reviewAhsan],
+  ["Hamza Ali", "Karachi", "Clean finishing, quick delivery and genuinely good quality. The shirt still looks sharp after several washes.", reviewHamza],
+  ["Saad Ahmed", "Islamabad", "The order process was simple and the sizing guidance was accurate. SIH has become my go-to for everyday pieces.", reviewSaad],
+  ["Danish Khan", "Rawalpindi", "The details feel considered, from the packaging to the finishing. It looks even better in person.", reviewDanish],
+] as const satisfies readonly (readonly [string, string, string, string])[];
 
 const SOCIALS: readonly (readonly [LucideIcon, string, string, SocialBrand])[] = [
   [Instagram, "Instagram", "https://www.instagram.com/sih.wears.official", "instagram"],
@@ -68,6 +72,120 @@ function MarqueeBar() {
         <TickerGroup />
         <TickerGroup hidden />
       </div>
+    </div>
+  );
+}
+
+function ReviewSlider() {
+  const [index, setIndex] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const count = REVIEWS.length;
+
+  useEffect(() => {
+    if (paused) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const t = setInterval(() => setIndex((i) => (i + 1) % count), 5000);
+    return () => clearInterval(t);
+  }, [paused, count]);
+
+  const go = (dir: 1 | -1) => setIndex((i) => (i + dir + count) % count);
+  const [name, city] = REVIEWS[index] ?? ["", ""];
+
+  return (
+    <div
+      className="mt-10"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+      onFocus={() => setPaused(true)}
+      onBlur={() => setPaused(false)}
+      aria-roledescription="carousel"
+      aria-label="Customer review slideshow"
+    >
+      <div className="relative overflow-hidden border border-contrast-foreground/40">
+        <div
+          className="review-track flex"
+          style={{ transform: `translateX(-${index * 100}%)` }}
+          aria-live="polite"
+        >
+          {REVIEWS.map(([rName, rCity, rReview, rAvatar], i) => (
+            <div
+              key={rName}
+              className="w-full flex-none"
+              aria-hidden={i !== index || undefined}
+            >
+              <div className="flex flex-col sm:flex-row">
+                <div className="relative w-full shrink-0 overflow-hidden border-b border-contrast-foreground/40 sm:w-64 sm:border-b-0 sm:border-r lg:w-80">
+                  <img
+                    src={rAvatar}
+                    alt={`${rName} from ${rCity}`}
+                    loading="lazy"
+                    className={`h-56 w-full object-cover object-top grayscale transition-opacity duration-500 sm:h-full sm:min-h-[22rem] ${i === index ? "opacity-100" : "opacity-0"}`}
+                  />
+                </div>
+                <div className="flex flex-1 flex-col justify-between p-7 sm:p-10 lg:p-12">
+                  <div>
+                    <div className="flex items-center justify-between">
+                      <Quote size={26} strokeWidth={1.2} className="text-contrast-foreground/80" />
+                      <div className="flex gap-1" aria-label="Five out of five stars">
+                        {Array.from({ length: 5 }).map((_, s) => (
+                          <Star key={s} size={13} fill="currentColor" />
+                        ))}
+                      </div>
+                    </div>
+                    <blockquote className="mt-7 text-lg font-semibold leading-relaxed sm:text-2xl sm:leading-relaxed">
+                      “{rReview}”
+                    </blockquote>
+                  </div>
+                  <div className="mt-9 border-t border-contrast-foreground/40 pt-5">
+                    <p className="text-sm font-bold uppercase tracking-wide">{rName}</p>
+                    <p className="mt-1 text-xs uppercase tracking-widest text-contrast-foreground/60">{rCity}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="mt-5 flex items-center justify-between">
+        <p className="text-xs font-bold uppercase tracking-[0.25em] text-contrast-foreground/60">
+          <span className="text-contrast-foreground">{String(index + 1).padStart(2, "0")}</span>
+          <span className="mx-1.5">/</span>
+          {String(count).padStart(2, "0")}
+        </p>
+        <div className="flex items-center gap-2">
+          {REVIEWS.map((r, i) => (
+            <button
+              key={r[0]}
+              type="button"
+              onClick={() => setIndex(i)}
+              aria-label={`Show review ${i + 1} of ${count}`}
+              aria-current={i === index || undefined}
+              className={`h-0.5 w-7 transition-colors duration-300 ${i === index ? "bg-contrast-foreground" : "bg-contrast-foreground/30 hover:bg-contrast-foreground/60"}`}
+            />
+          ))}
+          <div className="ml-3 flex">
+            <button
+              type="button"
+              onClick={() => go(-1)}
+              aria-label="Previous review"
+              className="flex h-10 w-10 items-center justify-center border border-contrast-foreground/50 transition-colors duration-200 hover:bg-contrast-foreground hover:text-contrast"
+            >
+              <ChevronLeft size={17} />
+            </button>
+            <button
+              type="button"
+              onClick={() => go(1)}
+              aria-label="Next review"
+              className="flex h-10 w-10 items-center justify-center border border-l-0 border-contrast-foreground/50 transition-colors duration-200 hover:bg-contrast-foreground hover:text-contrast"
+            >
+              <ChevronRight size={17} />
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <p className="sr-only" aria-live="polite">Review by {name} from {city}</p>
     </div>
   );
 }
@@ -156,11 +274,12 @@ function Index() {
           <div className="page-shell section-space">
             <Reveal className="flex flex-col justify-between gap-5 border-b border-contrast-foreground/40 pb-7 sm:flex-row sm:items-end">
               <div><p className="eyebrow text-contrast-foreground/65">What they say</p><h2 id="customer-reviews" className="mt-2 text-3xl font-extrabold uppercase leading-none sm:text-5xl">Customer Reviews</h2></div>
-              <div className="flex gap-1" aria-label="Five out of five stars">{Array.from({length:5}).map((_,i)=><Star key={i} size={15} fill="currentColor"/>)}</div>
+              <div className="flex items-center gap-3">
+                <div className="flex gap-1" aria-label="Five out of five stars">{Array.from({length:5}).map((_,i)=><Star key={i} size={15} fill="currentColor"/>)}</div>
+                <span className="text-xs font-bold uppercase tracking-[0.2em] text-contrast-foreground/60">5.0 Rated</span>
+              </div>
             </Reveal>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4">
-              {REVIEWS.map(([name,city,review],index)=><Reveal key={name} delay={(index % 4) as 0 | 1 | 2 | 3} className={`flex h-full flex-col py-8 sm:px-6 sm:py-9 ${index ? "border-t border-contrast-foreground/30 sm:border-l sm:border-t-0" : ""} ${index === 2 ? "sm:border-l-0 lg:border-l" : ""}`}><div className="flex items-center justify-between"><Quote size={21} strokeWidth={1.3}/><div className="flex gap-0.5" aria-label="Five out of five stars">{Array.from({length:5}).map((_,i)=><Star key={i} size={11} fill="currentColor"/>)}</div></div><blockquote className="mt-6 flex-1 text-base font-semibold leading-7">“{review}”</blockquote><div className="mt-7 border-t border-contrast-foreground/30 pt-4"><p className="text-xs font-bold uppercase">{name}</p><p className="mt-1 text-xs text-contrast-foreground/60">{city}</p></div></Reveal>)}
-            </div>
+            <ReviewSlider />
           </div>
         </section>
 
