@@ -34,11 +34,11 @@ const SERVICES = [
 ] as const;
 
 const REVIEWS = [
-  ["Ahsan Raza", "Lahore", "The fabric feels premium and the fit is exactly as shown. Easily one of my best online clothing purchases."],
-  ["Hamza Ali", "Karachi", "Clean finishing, quick delivery and genuinely good quality. The shirt still looks sharp after several washes."],
-  ["Saad Ahmed", "Islamabad", "The order process was simple and the sizing guidance was accurate. SIH has become my go-to for everyday pieces."],
-  ["Danish Khan", "Rawalpindi", "The details feel considered, from the packaging to the finishing. It looks even better in person."],
-] as const;
+  ["Ahsan Raza", "Lahore", "The fabric feels premium and the fit is exactly as shown. Easily one of my best online clothing purchases.", reviewAhsan],
+  ["Hamza Ali", "Karachi", "Clean finishing, quick delivery and genuinely good quality. The shirt still looks sharp after several washes.", reviewHamza],
+  ["Saad Ahmed", "Islamabad", "The order process was simple and the sizing guidance was accurate. SIH has become my go-to for everyday pieces.", reviewSaad],
+  ["Danish Khan", "Rawalpindi", "The details feel considered, from the packaging to the finishing. It looks even better in person.", reviewDanish],
+] as const satisfies readonly (readonly [string, string, string, string])[];
 
 const SOCIALS: readonly (readonly [LucideIcon, string, string, SocialBrand])[] = [
   [Instagram, "Instagram", "https://www.instagram.com/sih.wears.official", "instagram"],
