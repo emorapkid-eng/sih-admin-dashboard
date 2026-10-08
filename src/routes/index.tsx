@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Headphones, RotateCcw, ShieldCheck, Truck, Instagram, Facebook, Mail, Music2, Quote, Star, Youtube, type LucideIcon } from "lucide-react";
-import { useState } from "react";
+import { ArrowRight, ChevronLeft, ChevronRight, Headphones, RotateCcw, ShieldCheck, Truck, Instagram, Facebook, Mail, Music2, Quote, Star, Youtube, type LucideIcon } from "lucide-react";
+import { useEffect, useState } from "react";
 import storyImage from "@/assets/sih-story.png.asset.json";
 import grittyBackdrop from "@/assets/gritty-backdrop.png.asset.json";
 import { Hero } from "@/components/site/Hero";
