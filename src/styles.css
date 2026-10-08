@@ -103,6 +103,8 @@
 .scroll-reveal.is-visible { opacity: 1; transform: translateY(0); }
 .editorial-rule { position: relative; }
 .editorial-rule::before { content: ""; position: absolute; inset: 0 auto 0 0; width: 0.25rem; background: var(--color-foreground); }
+.social-ig:hover { border-color: transparent; color: #fff; background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+.social-tt:hover { border-color: transparent; color: #fff; background: linear-gradient(45deg, #25f4ee, #fe2c55); }
 .marquee-track { display: flex; width: max-content; animation: marquee-right 34s linear infinite; will-change: transform; }
 
 @media (min-width: 640px) { .page-shell { padding-inline: 1.5rem; } }

@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/button";
 import { CATEGORIES } from "@/lib/shop";
 import { useProducts } from "@/lib/products-context";
 import { Reveal } from "@/components/site/Reveal";
+import { SocialIcon, type SocialBrand } from "@/components/site/SocialIcon";
 
 export const Route = createFileRoute("/")({
   head: () =>
@@ -35,12 +36,12 @@ const REVIEWS = [
   ["Danish Khan", "Rawalpindi", "The details feel considered, from the packaging to the finishing. It looks even better in person."],
 ] as const;
 
-const SOCIALS: readonly (readonly [LucideIcon, string, string])[] = [
-  [Instagram, "Instagram", "https://www.instagram.com/sih.wears.official"],
-  [Facebook, "Facebook", "https://www.facebook.com/SIHWearsofficial"],
-  [Youtube, "YouTube", "https://www.youtube.com/@sihwears"],
-  [Music2, "TikTok", "https://www.tiktok.com/@sih.wears.official"],
-  [Mail, "Email", "mailto:sih.wears@gmail.com"],
+const SOCIALS: readonly (readonly [LucideIcon, string, string, SocialBrand])[] = [
+  [Instagram, "Instagram", "https://www.instagram.com/sih.wears.official", "instagram"],
+  [Facebook, "Facebook", "https://www.facebook.com/SIHWearsofficial", "facebook"],
+  [Youtube, "YouTube", "https://www.youtube.com/@sihwears", "youtube"],
+  [Music2, "TikTok", "https://www.tiktok.com/@sih.wears.official", "tiktok"],
+  [Mail, "Email", "mailto:sih.wears@gmail.com", "mail"],
 ];
 
 const TICKER = ["SIH WEARS", "NEW DROP", "PREMIUM MENSWEAR", "EST. 2026", "WEAR YOUR STYLE", "3-DAY RETURNS"] as const;
@@ -176,7 +177,7 @@ function Index() {
             </form>
           )}
           <div className="mt-8 flex justify-center gap-2">
-            {SOCIALS.map(([Icon,label,href])=><a key={label} href={href} target={href.startsWith("mailto:") ? undefined : "_blank"} rel={href.startsWith("mailto:") ? undefined : "noreferrer"} aria-label={label} title={label} className="grid h-10 w-10 place-items-center border border-foreground transition-colors hover:bg-primary hover:text-primary-foreground"><Icon size={16} strokeWidth={1.5}/></a>)}
+            {SOCIALS.map(([Icon, label, href, brand]) => <SocialIcon key={label} icon={Icon} label={label} href={href} brand={brand} />)}
           </div>
         </section>
       </main>
