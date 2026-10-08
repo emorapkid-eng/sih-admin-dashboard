@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
-import { Facebook, Instagram, Mail, Music2, Youtube } from "lucide-react";
+import { Mail } from "lucide-react";
 import logo from "@/assets/sih-logo.png";
+import { SocialIcon, type SocialBrand } from "@/components/site/SocialIcon";
 const shop=[["All Products","/shop"],["Shirts","/shirts"],["Pants","/pants"],["Gadgets","/gadgets"],["Sunglasses","/sunglasses"]] as const;
 const socials=[
   [Instagram,"Instagram","https://www.instagram.com/sih.wears.official"],
