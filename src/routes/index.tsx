@@ -1,6 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, ChevronLeft, ChevronRight, Headphones, RotateCcw, ShieldCheck, Truck, Instagram, Facebook, Mail, Music2, Quote, Star, Youtube, type LucideIcon } from "lucide-react";
 import { useEffect, useState } from "react";
+import reviewAhsan from "@/assets/review-ahsan.jpg";
+import reviewHamza from "@/assets/review-hamza.jpg";
+import reviewSaad from "@/assets/review-saad.jpg";
+import reviewDanish from "@/assets/review-danish.jpg";
 import storyImage from "@/assets/sih-story.png.asset.json";
 import grittyBackdrop from "@/assets/gritty-backdrop.png.asset.json";
 import { Hero } from "@/components/site/Hero";
