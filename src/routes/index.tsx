@@ -89,7 +89,7 @@ function ReviewSlider() {
   }, [paused, count]);
 
   const go = (dir: 1 | -1) => setIndex((i) => (i + dir + count) % count);
-  const [name, city, review, avatar] = REVIEWS[index];
+  const [name, city] = REVIEWS[index] ?? ["", ""];
 
   return (
     <div
