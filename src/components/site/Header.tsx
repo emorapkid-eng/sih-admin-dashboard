@@ -6,8 +6,8 @@ import { useCart } from "@/lib/cart";
 import { Button } from "@/components/ui/button";
 
 const NAV = [
-  ["Home", "/"], ["Shop", "/shop"], ["Shirts", "/shirts"], ["Pants", "/pants"],
-  ["Gadgets", "/gadgets"], ["Sunglasses", "/sunglasses"], ["About", "/about"],
+  ["Home", "/"], ["Shop", "/shop"], ["Hoodies", "/hoodies"], ["Shirts", "/shirts"],
+  ["Pants", "/pants"], ["Caps", "/caps"], ["About", "/about"],
 ] as const;
 
 export function Header({ overlay = false }: { overlay?: boolean }) {

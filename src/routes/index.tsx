@@ -21,7 +21,7 @@ export const Route = createFileRoute("/")({
   head: () =>
     meta(
       "SIH WEARS — Wear Your Style | Premium Menswear",
-      "Premium shirts, pants, gadgets and sunglasses for modern men. Cash on delivery, NayaPay and 3-day returns.",
+      "Premium hoodies, shirts, pants and caps for modern men. Cash on delivery, NayaPay and 3-day returns.",
     ),
   component: Index,
 });

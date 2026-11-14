@@ -12,7 +12,7 @@ const schema = z.object({ q: z.string().optional().catch(undefined), category: z
 
 export const Route = createFileRoute("/shop")({
   validateSearch: schema,
-  head: () => meta("Shop All Products — SIH WEARS", "Browse every SIH WEARS shirt, pant, gadget and pair of sunglasses."),
+  head: () => meta("Shop All Products — SIH WEARS", "Browse SIH WEARS hoodies, shirts, pants and caps."),
   component: Shop,
 });
 

@@ -4,7 +4,7 @@ import { useState } from "react";
 import { ProductGrid, Shell, meta } from "@/components/site/Shell";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/lib/cart";
-import { categoryName, formatPrice } from "@/lib/shop";
+import { categoryName, formatPrice, isComingSoon } from "@/lib/shop";
 import { useProducts } from "@/lib/products-context";
 import { listProducts } from "@/lib/products.functions";
 
@@ -22,7 +22,7 @@ export const Route = createFileRoute("/products/$productId")({
   component: ProductPage,
 });
 
-const catPath = { shirts: "/shirts", pants: "/pants", gadgets: "/gadgets", sunglasses: "/sunglasses" } as const;
+const catPath = { hoodies: "/hoodies", shirts: "/shirts", pants: "/pants", caps: "/caps" } as const;
 
 function ProductNotFound() {
   return (
@@ -54,14 +54,14 @@ function ProductPage() {
           {product.tag && <span className="bg-primary px-2.5 py-1 text-[0.58rem] font-semibold uppercase tracking-[0.12em] text-primary-foreground">{product.tag}</span>}
           <p className="eyebrow mt-5">{categoryName(product.category)}</p>
           <h1 className="mt-2 text-3xl font-semibold uppercase leading-tight sm:text-4xl">{product.name}</h1>
-          <p className="mt-4 text-xl font-medium">{formatPrice(product.price)}</p>
+          <p className="mt-4 text-xl font-medium">{isComingSoon(product)?"Coming soon — Drop 02":formatPrice(product.price)}</p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <div className="flex h-12 items-center justify-between border sm:w-36">
               <Button variant="ghost" size="icon" onClick={() => setQty((q) => Math.max(1, q - 1))} aria-label="Decrease quantity"><Minus size={14} /></Button>
               <span className="text-sm">{qty}</span>
               <Button variant="ghost" size="icon" onClick={() => setQty((q) => q + 1)} aria-label="Increase quantity"><Plus size={14} /></Button>
             </div>
-            <Button size="lg" className="h-12 flex-1" onClick={() => add(product.id, qty)}>Add to Cart</Button>
+            <Button size="lg" className="h-12 flex-1" disabled={isComingSoon(product)} onClick={() => add(product.id, qty)}>{isComingSoon(product) ? "Coming Soon" : "Add to Cart"}</Button>
           </div>
           <ul className="mt-8 space-y-3 border-t pt-6 text-sm text-muted-foreground">
             <li className="flex items-center gap-3"><Truck size={18} strokeWidth={1.4} /> Cash on Delivery or NayaPay</li>

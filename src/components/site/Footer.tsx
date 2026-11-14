@@ -3,7 +3,7 @@ import { Instagram, Music2 } from "lucide-react";
 import { Facebook, Mail, Youtube } from "lucide-react";
 import logo from "@/assets/sih-logo.png";
 import { SocialIcon, type SocialBrand } from "@/components/site/SocialIcon";
-const shop=[["All Products","/shop"],["Shirts","/shirts"],["Pants","/pants"],["Gadgets","/gadgets"],["Sunglasses","/sunglasses"]] as const;
+const shop=[["All Products","/shop"],["Hoodies","/hoodies"],["Shirts","/shirts"],["Pants","/pants"],["Caps","/caps"]] as const;
 const socials=[
   [Instagram,"Instagram","https://www.instagram.com/sih.wears.official","instagram"],
   [Facebook,"Facebook","https://www.facebook.com/SIHWearsofficial","facebook"],

@@ -12,15 +12,15 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as AdminRouteImport } from './routes/admin'
+import { Route as CapsRouteImport } from './routes/caps'
 import { Route as CartRouteImport } from './routes/cart'
 import { Route as ChaptersRouteImport } from './routes/chapters'
 import { Route as CheckoutRouteImport } from './routes/checkout'
 import { Route as ContactRouteImport } from './routes/contact'
-import { Route as GadgetsRouteImport } from './routes/gadgets'
+import { Route as HoodiesRouteImport } from './routes/hoodies'
 import { Route as PantsRouteImport } from './routes/pants'
 import { Route as ShirtsRouteImport } from './routes/shirts'
 import { Route as ShopRouteImport } from './routes/shop'
-import { Route as SunglassesRouteImport } from './routes/sunglasses'
 import { Route as ProductsProductIdRouteImport } from './routes/products.$productId'
 import { Route as ApiPublicProductImageSplatRouteImport } from './routes/api/public/product-image/$'
 
@@ -37,6 +37,11 @@ const AboutRoute = AboutRouteImport.update({
 const AdminRoute = AdminRouteImport.update({
   id: '/admin',
   path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CapsRoute = CapsRouteImport.update({
+  id: '/caps',
+  path: '/caps',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CartRoute = CartRouteImport.update({
@@ -59,9 +64,9 @@ const ContactRoute = ContactRouteImport.update({
   path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
-const GadgetsRoute = GadgetsRouteImport.update({
-  id: '/gadgets',
-  path: '/gadgets',
+const HoodiesRoute = HoodiesRouteImport.update({
+  id: '/hoodies',
+  path: '/hoodies',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PantsRoute = PantsRouteImport.update({
@@ -77,11 +82,6 @@ const ShirtsRoute = ShirtsRouteImport.update({
 const ShopRoute = ShopRouteImport.update({
   id: '/shop',
   path: '/shop',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SunglassesRoute = SunglassesRouteImport.update({
-  id: '/sunglasses',
-  path: '/sunglasses',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProductsProductIdRoute = ProductsProductIdRouteImport.update({
@@ -100,15 +100,15 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/admin': typeof AdminRoute
+  '/caps': typeof CapsRoute
   '/cart': typeof CartRoute
   '/chapters': typeof ChaptersRoute
   '/checkout': typeof CheckoutRoute
   '/contact': typeof ContactRoute
-  '/gadgets': typeof GadgetsRoute
+  '/hoodies': typeof HoodiesRoute
   '/pants': typeof PantsRoute
   '/shirts': typeof ShirtsRoute
   '/shop': typeof ShopRoute
-  '/sunglasses': typeof SunglassesRoute
   '/products/$productId': typeof ProductsProductIdRoute
   '/api/public/product-image/$': typeof ApiPublicProductImageSplatRoute
 }
@@ -116,15 +116,15 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/admin': typeof AdminRoute
+  '/caps': typeof CapsRoute
   '/cart': typeof CartRoute
   '/chapters': typeof ChaptersRoute
   '/checkout': typeof CheckoutRoute
   '/contact': typeof ContactRoute
-  '/gadgets': typeof GadgetsRoute
+  '/hoodies': typeof HoodiesRoute
   '/pants': typeof PantsRoute
   '/shirts': typeof ShirtsRoute
   '/shop': typeof ShopRoute
-  '/sunglasses': typeof SunglassesRoute
   '/products/$productId': typeof ProductsProductIdRoute
   '/api/public/product-image/$': typeof ApiPublicProductImageSplatRoute
 }
@@ -133,15 +133,15 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/admin': typeof AdminRoute
+  '/caps': typeof CapsRoute
   '/cart': typeof CartRoute
   '/chapters': typeof ChaptersRoute
   '/checkout': typeof CheckoutRoute
   '/contact': typeof ContactRoute
-  '/gadgets': typeof GadgetsRoute
+  '/hoodies': typeof HoodiesRoute
   '/pants': typeof PantsRoute
   '/shirts': typeof ShirtsRoute
   '/shop': typeof ShopRoute
-  '/sunglasses': typeof SunglassesRoute
   '/products/$productId': typeof ProductsProductIdRoute
   '/api/public/product-image/$': typeof ApiPublicProductImageSplatRoute
 }
@@ -151,15 +151,15 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/admin'
+    | '/caps'
     | '/cart'
     | '/chapters'
     | '/checkout'
     | '/contact'
-    | '/gadgets'
+    | '/hoodies'
     | '/pants'
     | '/shirts'
     | '/shop'
-    | '/sunglasses'
     | '/products/$productId'
     | '/api/public/product-image/$'
   fileRoutesByTo: FileRoutesByTo
@@ -167,15 +167,15 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/admin'
+    | '/caps'
     | '/cart'
     | '/chapters'
     | '/checkout'
     | '/contact'
-    | '/gadgets'
+    | '/hoodies'
     | '/pants'
     | '/shirts'
     | '/shop'
-    | '/sunglasses'
     | '/products/$productId'
     | '/api/public/product-image/$'
   id:
@@ -183,15 +183,15 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/admin'
+    | '/caps'
     | '/cart'
     | '/chapters'
     | '/checkout'
     | '/contact'
-    | '/gadgets'
+    | '/hoodies'
     | '/pants'
     | '/shirts'
     | '/shop'
-    | '/sunglasses'
     | '/products/$productId'
     | '/api/public/product-image/$'
   fileRoutesById: FileRoutesById
@@ -200,15 +200,15 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   AdminRoute: typeof AdminRoute
+  CapsRoute: typeof CapsRoute
   CartRoute: typeof CartRoute
   ChaptersRoute: typeof ChaptersRoute
   CheckoutRoute: typeof CheckoutRoute
   ContactRoute: typeof ContactRoute
-  GadgetsRoute: typeof GadgetsRoute
+  HoodiesRoute: typeof HoodiesRoute
   PantsRoute: typeof PantsRoute
   ShirtsRoute: typeof ShirtsRoute
   ShopRoute: typeof ShopRoute
-  SunglassesRoute: typeof SunglassesRoute
   ProductsProductIdRoute: typeof ProductsProductIdRoute
   ApiPublicProductImageSplatRoute: typeof ApiPublicProductImageSplatRoute
 }
@@ -234,6 +234,13 @@ declare module '@tanstack/react-router' {
       path: '/admin'
       fullPath: '/admin'
       preLoaderRoute: typeof AdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/caps': {
+      id: '/caps'
+      path: '/caps'
+      fullPath: '/caps'
+      preLoaderRoute: typeof CapsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/cart': {
@@ -264,11 +271,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/gadgets': {
-      id: '/gadgets'
-      path: '/gadgets'
-      fullPath: '/gadgets'
-      preLoaderRoute: typeof GadgetsRouteImport
+    '/hoodies': {
+      id: '/hoodies'
+      path: '/hoodies'
+      fullPath: '/hoodies'
+      preLoaderRoute: typeof HoodiesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/pants': {
@@ -292,13 +299,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ShopRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/sunglasses': {
-      id: '/sunglasses'
-      path: '/sunglasses'
-      fullPath: '/sunglasses'
-      preLoaderRoute: typeof SunglassesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/products/$productId': {
       id: '/products/$productId'
       path: '/products/$productId'
@@ -320,15 +320,15 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   AdminRoute: AdminRoute,
+  CapsRoute: CapsRoute,
   CartRoute: CartRoute,
   ChaptersRoute: ChaptersRoute,
   CheckoutRoute: CheckoutRoute,
   ContactRoute: ContactRoute,
-  GadgetsRoute: GadgetsRoute,
+  HoodiesRoute: HoodiesRoute,
   PantsRoute: PantsRoute,
   ShirtsRoute: ShirtsRoute,
   ShopRoute: ShopRoute,
-  SunglassesRoute: SunglassesRoute,
   ProductsProductIdRoute: ProductsProductIdRoute,
   ApiPublicProductImageSplatRoute: ApiPublicProductImageSplatRoute,
 }
