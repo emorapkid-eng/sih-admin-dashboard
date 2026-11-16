@@ -10,7 +10,7 @@ export function Hero(){return <section className="relative flex min-h-[calc(100s
   <div className="absolute inset-0 bg-gradient-to-r from-contrast/90 via-contrast/55 to-transparent"/><div className="absolute inset-0 bg-gradient-to-t from-contrast/55 via-transparent to-contrast/25"/><Header overlay/>
   <div className="page-shell relative flex w-full flex-1 items-end pb-12 pt-28 sm:pb-20 sm:pt-32"><div className="reveal-up max-w-[14rem] sm:max-w-none">
     <p className="mb-4 text-[0.68rem] font-bold uppercase text-contrast-foreground/80">SIH WEARS</p>
-    <h1 className="text-[3.2rem] font-extrabold uppercase leading-[0.88] sm:text-8xl lg:text-9xl">Wear<br/>Your Style</h1>
+    <h1 className="text-[3.2rem] font-extrabold uppercase leading-[0.88] tracking-tight sm:text-8xl lg:text-9xl"><span className="block">Wear</span><span className="text-outline block">Your Style</span></h1>
     <p className="mt-5 max-w-lg border-l-2 border-contrast-foreground pl-4 text-sm font-medium leading-6 text-contrast-foreground/85 sm:mt-6 sm:text-base">Streetwear with a story. Introducing our first heritage-inspired collection.</p>
     <Button asChild variant="inverse" size="lg" className="mt-7"><Link to="/shop">Shop the First Drop <ArrowRight size={16}/></Link></Button>
   </div></div>

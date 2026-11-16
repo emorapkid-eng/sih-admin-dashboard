@@ -199,18 +199,23 @@ function Index() {
       <MarqueeBar />
       <main>
         <section className="border-b-2 border-foreground bg-background">
-          <div className="border-b-2 border-foreground">
-            <Reveal className="page-shell grid grid-cols-[4.5rem_minmax(0,1fr)] items-stretch sm:grid-cols-[7rem_minmax(0,1fr)_auto]">
-              <div className="flex items-center justify-center border-x-2 border-foreground bg-primary px-2 py-7 text-center text-[0.65rem] font-bold uppercase text-primary-foreground sm:py-9 sm:text-xs">
-                New in
-              </div>
-              <div className="flex min-w-0 items-center border-r-2 border-foreground px-4 py-7 sm:px-7 sm:py-9">
-                <h2 className="text-2xl font-extrabold uppercase leading-none sm:text-4xl">First Drop</h2>
-              </div>
-              <Link to="/shop" className="col-span-2 flex min-h-12 items-center justify-between border-x-2 border-t-2 border-foreground px-4 text-[0.68rem] font-bold uppercase transition-colors hover:bg-primary hover:text-primary-foreground sm:col-span-1 sm:border-l-0 sm:border-t-0 sm:px-7">
-                View all <ArrowRight size={15} />
-              </Link>
-            </Reveal>
+          <div className="border-b border-foreground pb-1">
+            <div className="border-b-2 border-foreground">
+              <Reveal className="page-shell grid grid-cols-[5.5rem_minmax(0,1fr)] items-stretch sm:grid-cols-[9rem_minmax(0,1fr)_auto]">
+                <div className="flex flex-col items-center justify-center gap-2 border-x-2 border-foreground px-2 py-6 text-center sm:py-8">
+                  <span className="text-[0.6rem] font-bold uppercase tracking-[0.2em] text-muted-foreground">Edition</span>
+                  <span className="text-3xl font-extrabold leading-none sm:text-4xl">01</span>
+                  <span className="inline-flex items-center gap-1.5 text-[0.58rem] font-bold uppercase tracking-[0.18em]"><span className="relative flex h-1.5 w-1.5"><span className="beacon-ping absolute inset-0 bg-foreground" /><span className="relative h-1.5 w-1.5 bg-foreground" /></span>Live</span>
+                </div>
+                <div className="flex min-w-0 flex-col justify-center gap-2 border-r-2 border-foreground px-4 py-6 sm:px-8 sm:py-8">
+                  <h2 className="text-2xl font-extrabold uppercase leading-none sm:text-5xl">First Drop</h2>
+                  <p className="text-[0.6rem] font-bold uppercase tracking-[0.18em] text-muted-foreground sm:text-[0.68rem]">Karachi Heritage Hoodies — Strictly limited</p>
+                </div>
+                <Link to="/shop" className="col-span-2 flex min-h-12 items-center justify-between gap-4 border-x-2 border-t-2 border-foreground px-4 text-[0.68rem] font-bold uppercase tracking-[0.16em] transition-colors hover:bg-primary hover:text-primary-foreground sm:col-span-1 sm:border-l-0 sm:border-t-0 sm:px-8">
+                  View all <ArrowRight size={15} />
+                </Link>
+              </Reveal>
+            </div>
           </div>
           <div className="page-shell py-10 sm:py-14 lg:py-16">
             <ProductGrid products={products.filter((p) => p.category === "hoodies" && p.price > 0).slice(0, 2)} featured />
