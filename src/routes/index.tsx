@@ -5,8 +5,8 @@ import reviewAhsan from "@/assets/review-ahsan.jpg";
 import reviewHamza from "@/assets/review-hamza.jpg";
 import reviewSaad from "@/assets/review-saad.jpg";
 import reviewDanish from "@/assets/review-danish.jpg";
-import storyImage from "@/assets/sih-story.png.asset.json";
-import grittyBackdrop from "@/assets/gritty-backdrop.png.asset.json";
+import storyImage from "@/assets/sih-story.jpg";
+import grittyBackdrop from "@/assets/gritty-backdrop.jpg";
 import { Hero } from "@/components/site/Hero";
 import { Footer } from "@/components/site/Footer";
 import { CategoryCard } from "@/components/site/CategoryCard";
@@ -205,7 +205,7 @@ function Index() {
                 New in
               </div>
               <div className="flex min-w-0 items-center border-r-2 border-foreground px-4 py-7 sm:px-7 sm:py-9">
-                <h2 className="text-2xl font-extrabold uppercase leading-none sm:text-4xl">Latest Arrivals</h2>
+                <h2 className="text-2xl font-extrabold uppercase leading-none sm:text-4xl">First Drop</h2>
               </div>
               <Link to="/shop" className="col-span-2 flex min-h-12 items-center justify-between border-x-2 border-t-2 border-foreground px-4 text-[0.68rem] font-bold uppercase transition-colors hover:bg-primary hover:text-primary-foreground sm:col-span-1 sm:border-l-0 sm:border-t-0 sm:px-7">
                 View all <ArrowRight size={15} />
@@ -213,12 +213,12 @@ function Index() {
             </Reveal>
           </div>
           <div className="page-shell py-10 sm:py-14 lg:py-16">
-            <ProductGrid products={products.slice(0, 8)} />
+            <ProductGrid products={products.filter((p) => p.category === "hoodies" && p.price > 0).slice(0, 2)} featured />
           </div>
         </section>
 
         <section className="relative border-y-2 border-foreground bg-contrast text-contrast-foreground">
-          <img src={grittyBackdrop.url} alt="" aria-hidden="true" loading="lazy" className="absolute inset-0 h-full w-full object-cover object-center" />
+          <img src={grittyBackdrop} alt="" aria-hidden="true" loading="lazy" className="absolute inset-0 h-full w-full object-cover object-center" />
           <div className="absolute inset-0 bg-black/60" aria-hidden="true" />
           <div className="relative page-shell section-space">
             <Reveal>
@@ -233,7 +233,7 @@ function Index() {
 
         <section className="page-shell section-space grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
           <Reveal className="border border-foreground bg-contrast p-0">
-            <img src={storyImage.url} alt="The SIH WEARS story" loading="lazy" className="aspect-[3/2] w-full object-cover" />
+            <img src={storyImage} alt="The SIH WEARS story" loading="lazy" className="aspect-[3/2] w-full object-cover" />
           </Reveal>
           <Reveal delay={1}>
             <p className="eyebrow">About SIH WEARS</p>

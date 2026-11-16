@@ -1,7 +1,7 @@
-import blueMotorsportShirt from "@/assets/sih-blue-motorsport-shirt.jpeg";
+import shirtImg from "@/assets/cat-shirt-dark.jpg";
 import pantsImg from "@/assets/p-pants.jpg";
-import hoodieImg from "@/assets/sih-hoodie-burgundy-front.jpg";
-import comingImg from "@/assets/coming-soon-coming.jpg";
+import hoodieImg from "@/assets/cat-hoodie-dark.jpg";
+import capImg from "@/assets/cat-cap-dark.jpg";
 
 /* ---------------------------------------------------------------
  * STORE CONFIG — edit these values only
@@ -12,6 +12,8 @@ export const STORE = {
   whatsappNumber: "923022281109",
   nayapayNumber: "03022281109",
   currency: "PKR",
+  shippingFee: 300,
+  codFee: 100,
 };
 
 export const formatPrice = (n: number) =>
@@ -26,9 +28,9 @@ export const CATEGORIES: {
   image: string;
 }[] = [
   { slug: "hoodies", name: "HOODIES", tagline: "Drop 01. Karachi Heritage.", image: hoodieImg },
-  { slug: "shirts", name: "SHIRTS", tagline: "Classic fits. Modern looks.", image: blueMotorsportShirt },
+  { slug: "shirts", name: "SHIRTS", tagline: "Classic fits. Modern looks.", image: shirtImg },
   { slug: "pants", name: "PANTS", tagline: "Comfort meets style.", image: pantsImg },
-  { slug: "caps", name: "CAPS", tagline: "Coming soon.", image: comingImg },
+  { slug: "caps", name: "CAPS", tagline: "Coming soon.", image: capImg },
 ];
 
 export type Product = {

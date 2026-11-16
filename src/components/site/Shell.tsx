@@ -17,9 +17,9 @@ export function Shell({ children }: { children: ReactNode }) {
   );
 }
 
-export function ProductGrid({ products }: { products: Product[] }) {
+export function ProductGrid({ products, featured = false }: { products: Product[]; featured?: boolean }) {
   return (
-    <div className="grid grid-cols-2 gap-x-3 gap-y-8 sm:gap-x-5 lg:grid-cols-4">
+    <div className={featured ? "mx-auto grid max-w-5xl grid-cols-2 gap-x-3 gap-y-8 sm:gap-x-8" : "grid grid-cols-2 gap-x-3 gap-y-8 sm:gap-x-5 lg:grid-cols-4"}>
       {products.map((p, index) => (
         <Reveal key={p.id} delay={(index % 4) as 0 | 1 | 2 | 3} className="h-full">
           <ProductCard product={p} />

@@ -48,6 +48,10 @@ function Checkout() {
     );
   };
 
+  const shipping = items.length ? STORE.shippingFee : 0;
+  const codFee = items.length && payment === "COD" ? STORE.codFee : 0;
+  const total = subtotal + shipping + codFee;
+
   const placeOrder = () => {
     if (items.length === 0) return setError("Your cart is empty.");
     if (!form.name || !form.phone || !form.city || !form.address) return setError("Please fill in all the fields.");
@@ -57,7 +61,7 @@ function Checkout() {
       `*Name:* ${form.name}`, `*Phone:* ${form.phone}`, `*City:* ${form.city}`, `*Address:* ${form.address}`,
       location ? `*Location:* ${location}` : "", "", "*Items*",
       ...items.map(({ product, qty }) => `• ${product.name} (${categoryName(product.category)}) × ${qty} — ${formatPrice(product.price * qty)}`),
-      "", `*Total:* ${formatPrice(subtotal)}`,
+      "", `*Subtotal:* ${formatPrice(subtotal)}`, `*Shipping:* ${formatPrice(shipping)}`, codFee ? `*COD charges:* ${formatPrice(codFee)}` : "", `*Total:* ${formatPrice(total)}`,
       `*Payment:* ${payment === "COD" ? "Cash on Delivery" : `NayaPay (${STORE.nayapayNumber})`}`,
     ].filter(Boolean);
     void createOrder({
@@ -69,7 +73,7 @@ function Checkout() {
         location,
         payment,
         items: items.map(({ product, qty }) => ({ name: product.name, qty, price: product.price })),
-        total: subtotal,
+        total,
       },
     }).catch(() => undefined);
     const url = `https://wa.me/${STORE.whatsappNumber}?text=${encodeURIComponent(lines.join("\n"))}`;
@@ -178,11 +182,12 @@ function Checkout() {
           <div className="p-5 sm:p-6">
             <div className="space-y-3 border-b border-foreground pb-5 text-sm">
               <div className="flex justify-between"><span className="text-muted-foreground">Subtotal</span><strong>{formatPrice(subtotal)}</strong></div>
-              <div className="flex justify-between"><span className="text-muted-foreground">Shipping</span><strong>Confirmed on WhatsApp</strong></div>
+              <div className="flex justify-between"><span className="text-muted-foreground">Shipping</span><strong>{formatPrice(shipping)}</strong></div>
+              {codFee > 0 && <div className="flex justify-between"><span className="text-muted-foreground">COD charges</span><strong>{formatPrice(codFee)}</strong></div>}
             </div>
             <div className="flex items-end justify-between py-5">
               <span className="text-xs font-extrabold uppercase">Total</span>
-              <strong className="text-2xl font-extrabold">{formatPrice(subtotal)}</strong>
+              <strong className="text-2xl font-extrabold">{formatPrice(total)}</strong>
             </div>
             {error && <p className="mb-4 border border-destructive p-3 text-sm font-medium text-destructive" role="alert">{error}</p>}
             <Button size="lg" className="w-full justify-between px-5" onClick={placeOrder}>

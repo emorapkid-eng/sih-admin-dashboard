@@ -18,6 +18,7 @@ export function Header({ overlay = false }: { overlay?: boolean }) {
   const navigate = useNavigate();
   const tone = "text-foreground";
   return <header className={overlay ? "absolute inset-x-0 top-0 z-40 border-b-2 border-foreground bg-background text-foreground" : "sticky top-0 z-40 border-b-2 border-foreground bg-background/95 backdrop-blur-xl"}>
+    <div className="overflow-hidden border-b border-foreground bg-background py-1.5 text-foreground" aria-label="Preorders are live now"><div className="marquee-track">{[0,1].map(g=><div key={g} className="flex shrink-0" aria-hidden={g===1||undefined}>{Array.from({length:8}).map((_,i)=><span key={i} className="mx-8 whitespace-nowrap text-[0.68rem] font-extrabold uppercase tracking-[0.22em]">Preorders Are Live Now</span>)}</div>)}</div></div>
     <div className={`page-shell grid h-16 grid-cols-[minmax(0,1fr)_auto] items-center gap-3 sm:flex sm:h-20 ${tone}`}>
       <Link to="/" className="flex min-w-0 items-center" aria-label="SIH WEARS home">
         <img src={logo} alt="SIH WEARS" className="h-12 w-auto shrink-0 object-contain sm:h-16" />
