@@ -119,3 +119,10 @@
 .beacon-ping { animation: beacon-ping 1.8s cubic-bezier(0,0,0.2,1) infinite; }
 @keyframes beacon-ping { 0% { transform: scale(1); opacity: .8; } 75%,100% { transform: scale(2.6); opacity: 0; } }
 @media (prefers-reduced-motion: reduce) { .beacon-ping { animation: none; opacity: 0; } }
+
+.live-dot { background-color: #ef4444; }
+.live-text { color: #ef4444; }
+.hang-tag { transform-origin: top center; }
+.group:hover .hang-tag { animation: tag-swing 1.3s ease-out; }
+@keyframes tag-swing { 0%{transform:rotate(0)} 18%{transform:rotate(-16deg)} 38%{transform:rotate(11deg)} 58%{transform:rotate(-7deg)} 78%{transform:rotate(4deg)} 100%{transform:rotate(0)} }
+@media (prefers-reduced-motion: reduce) { .group:hover .hang-tag { animation: none; } }

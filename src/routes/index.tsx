@@ -205,7 +205,7 @@ function Index() {
                 <div className="flex flex-col items-center justify-center gap-2 border-x-2 border-foreground px-2 py-6 text-center sm:py-8">
                   <span className="text-[0.6rem] font-bold uppercase tracking-[0.2em] text-muted-foreground">Edition</span>
                   <span className="text-3xl font-extrabold leading-none sm:text-4xl">01</span>
-                  <span className="inline-flex items-center gap-1.5 text-[0.58rem] font-bold uppercase tracking-[0.18em]"><span className="relative flex h-1.5 w-1.5"><span className="beacon-ping absolute inset-0 bg-foreground" /><span className="relative h-1.5 w-1.5 bg-foreground" /></span>Live</span>
+                  <span className="inline-flex items-center gap-1.5 text-[0.58rem] font-bold uppercase tracking-[0.18em]"><span className="relative flex h-1.5 w-1.5"><span className="beacon-ping live-dot absolute inset-0 rounded-full" /><span className="live-dot relative h-1.5 w-1.5 rounded-full" /></span><span className="live-text">Live</span></span>
                 </div>
                 <div className="flex min-w-0 flex-col justify-center gap-2 border-r-2 border-foreground px-4 py-6 sm:px-8 sm:py-8">
                   <h2 className="text-2xl font-extrabold uppercase leading-none sm:text-5xl">First Drop</h2>

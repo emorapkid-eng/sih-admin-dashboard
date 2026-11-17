@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "@tanstack/react-router";
-import { Menu, Search, ShoppingBag, UserRound, X } from "lucide-react";
+import { Menu, Search, ShieldCheck, ShoppingBag, UserRound, X } from "lucide-react";
 import { useState } from "react";
 import logo from "@/assets/sih-logo.png";
 import { useCart } from "@/lib/cart";
@@ -29,11 +29,12 @@ export function Header({ overlay = false }: { overlay?: boolean }) {
       <div className="flex shrink-0 items-center gap-0.5 sm:ml-auto">
         <Button variant="ghost" size="icon" aria-label="Search products" onClick={()=>setSearch(v=>!v)} className={tone}><Search size={18} strokeWidth={1.5}/></Button>
         <Button asChild variant="ghost" size="icon" className={`${tone} hidden sm:inline-flex`}><Link to="/contact" aria-label="Account and contact"><UserRound size={18} strokeWidth={1.5}/></Link></Button>
+        <Button asChild variant="ghost" size="icon" className={tone}><Link to="/admin" aria-label="Admin sign in" title="Admin sign in"><ShieldCheck size={18} strokeWidth={1.5}/></Link></Button>
         <Button variant="ghost" size="icon" aria-label="Open cart" onClick={()=>setOpen(true)} className={`relative ${tone}`}><ShoppingBag size={18} strokeWidth={1.5}/>{count>0&&<span className="absolute right-0.5 top-0.5 grid h-4 min-w-4 place-items-center rounded-full bg-primary px-1 text-[9px] text-primary-foreground">{count}</span>}</Button>
         <Button variant="ghost" size="icon" aria-label="Menu" onClick={()=>setMenu(v=>!v)} className={`${tone} xl:hidden`}>{menu?<X size={20}/>:<Menu size={20}/>}</Button>
       </div>
     </div>
     {search&&<div className="border-y-2 border-foreground bg-background text-foreground"><form className="page-shell flex h-14 items-center gap-3" onSubmit={e=>{e.preventDefault();setSearch(false);void navigate({to:"/shop",search:{q}})}}><Search size={17} className="shrink-0 text-muted-foreground"/><input autoFocus value={q} onChange={e=>setQ(e.target.value)} placeholder="Search the collection" className="w-full bg-transparent text-sm font-medium outline-none placeholder:text-muted-foreground"/><Button size="sm" type="submit">Search</Button></form></div>}
-    {menu&&<nav className="border-y-2 border-foreground bg-background px-4 py-4 text-foreground xl:hidden">{NAV.map(([label,to])=><Link key={to} to={to} onClick={()=>setMenu(false)} className="flex min-h-11 items-center border-b text-xs font-bold uppercase last:border-b-0">{label}</Link>)}<Link to="/contact" onClick={()=>setMenu(false)} className="flex min-h-11 items-center text-xs font-bold uppercase">Contact</Link></nav>}
+    {menu&&<nav className="border-y-2 border-foreground bg-background px-4 py-4 text-foreground xl:hidden">{NAV.map(([label,to])=><Link key={to} to={to} onClick={()=>setMenu(false)} className="flex min-h-11 items-center border-b text-xs font-bold uppercase last:border-b-0">{label}</Link>)}<Link to="/contact" onClick={()=>setMenu(false)} className="flex min-h-11 items-center border-b text-xs font-bold uppercase">Contact</Link><Link to="/admin" onClick={()=>setMenu(false)} className="flex min-h-11 items-center gap-2 text-xs font-bold uppercase"><ShieldCheck size={15}/>Admin Sign In</Link></nav>}
   </header>;
 }
