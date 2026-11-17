@@ -51,4 +51,7 @@ export const categoryName = (slug: CategorySlug) =>
 /** Placeholder "coming soon" items have no price and cannot be bought. */
 export const isComingSoon = (p: Pick<Product, "price">) => p.price <= 0;
 /** Alternate (back) view for products whose image follows the -front naming. */
-export const altImage = (src: string) => (src.includes("-front.") ? src.replace("-front.", "-back.") : undefined);
+export const altImage = (src: string) => (src.includes("-front.") ? src.replace("model-hoodie-", "sih-hoodie-").replace("-front.", "-back.") : undefined);
+
+/** On-model shot for hoodie cards when a matching model photo exists. */
+export const cardImage = (src: string) => (/sih-hoodie-(burgundy|navy)-front\./.test(src) ? src.replace("sih-hoodie-", "model-hoodie-") : src);

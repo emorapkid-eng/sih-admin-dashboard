@@ -1,3 +1,4 @@
+import monument from "@/assets/karachi-monument-fade.jpg";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, ChevronLeft, ChevronRight, Headphones, RotateCcw, ShieldCheck, Truck, Instagram, Facebook, Mail, Music2, Quote, Star, Youtube, type LucideIcon } from "lucide-react";
 import { useEffect, useState } from "react";
@@ -199,23 +200,19 @@ function Index() {
       <MarqueeBar />
       <main>
         <section className="border-b-2 border-foreground bg-background">
-          <div className="border-b border-foreground pb-1">
-            <div className="border-b-2 border-foreground">
-              <Reveal className="page-shell grid grid-cols-[5.5rem_minmax(0,1fr)] items-stretch sm:grid-cols-[9rem_minmax(0,1fr)_auto]">
-                <div className="flex flex-col items-center justify-center gap-2 border-x-2 border-foreground px-2 py-6 text-center sm:py-8">
-                  <span className="text-[0.6rem] font-bold uppercase tracking-[0.2em] text-muted-foreground">Edition</span>
-                  <span className="text-3xl font-extrabold leading-none sm:text-4xl">01</span>
-                  <span className="inline-flex items-center gap-1.5 text-[0.58rem] font-bold uppercase tracking-[0.18em]"><span className="relative flex h-1.5 w-1.5"><span className="beacon-ping live-dot absolute inset-0 rounded-full" /><span className="live-dot relative h-1.5 w-1.5 rounded-full" /></span><span className="live-text">Live</span></span>
-                </div>
-                <div className="flex min-w-0 flex-col justify-center gap-2 border-r-2 border-foreground px-4 py-6 sm:px-8 sm:py-8">
-                  <h2 className="text-2xl font-extrabold uppercase leading-none sm:text-5xl">First Drop</h2>
-                  <p className="text-[0.6rem] font-bold uppercase tracking-[0.18em] text-muted-foreground sm:text-[0.68rem]">Karachi Heritage Hoodies — Strictly limited</p>
-                </div>
-                <Link to="/shop" className="col-span-2 flex min-h-12 items-center justify-between gap-4 border-x-2 border-t-2 border-foreground px-4 text-[0.68rem] font-bold uppercase tracking-[0.16em] transition-colors hover:bg-primary hover:text-primary-foreground sm:col-span-1 sm:border-l-0 sm:border-t-0 sm:px-8">
-                  View all <ArrowRight size={15} />
-                </Link>
-              </Reveal>
-            </div>
+          <div className="relative overflow-hidden border-b border-border">
+            <img src={monument} alt="" aria-hidden width={1920} height={640} loading="lazy" className="pointer-events-none absolute inset-y-0 right-0 h-full w-full object-cover object-right opacity-70 sm:w-3/4" />
+            <div className="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-transparent" />
+            <Reveal className="page-shell relative flex flex-col gap-6 py-12 sm:flex-row sm:items-end sm:justify-between sm:py-16">
+              <div className="editorial-rule pl-5 sm:pl-7">
+                <p className="eyebrow inline-flex items-center gap-3 text-foreground">Edition 01 <span className="inline-flex items-center gap-1.5"><span className="relative flex h-1.5 w-1.5"><span className="beacon-ping live-dot absolute inset-0 rounded-full" /><span className="live-dot relative h-1.5 w-1.5 rounded-full" /></span><span className="live-text">Live</span></span></p>
+                <h2 className="mt-3 text-4xl font-extrabold uppercase leading-[0.9] sm:text-6xl lg:text-7xl">First Drop</h2>
+                <p className="mt-4 text-[0.62rem] font-bold uppercase tracking-[0.3em] text-muted-foreground sm:text-xs">Karachi Heritage Hoodies — Strictly limited</p>
+              </div>
+              <Link to="/shop" className="inline-flex w-fit items-center gap-3 border-b-2 border-foreground pb-1 text-[0.7rem] font-bold uppercase tracking-[0.2em] transition-opacity hover:opacity-60">
+                View all <ArrowRight size={15} />
+              </Link>
+            </Reveal>
           </div>
           <div className="page-shell py-10 sm:py-14 lg:py-16">
             <ProductGrid products={products.filter((p) => p.category === "hoodies" && p.price > 0).slice(0, 2)} featured />
