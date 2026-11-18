@@ -1,7 +1,7 @@
 import { createServerFn } from "@tanstack/react-start";
 import { createClient } from "@supabase/supabase-js";
 import type { Database } from "@/integrations/supabase/types";
-import type { CategorySlug, Product } from "./shop";
+import { resolveImage, type CategorySlug, type Product } from "./shop";
 
 type Row = Database["public"]["Tables"]["products"]["Row"];
 
@@ -11,7 +11,7 @@ export function toProduct(row: Row): Product {
     name: row.name,
     category: row.category as CategorySlug,
     price: row.price,
-    image: row.image,
+    image: resolveImage(row.image),
     description: row.description,
     isNew: row.is_new,
     isFeatured: row.is_featured,

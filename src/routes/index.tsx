@@ -1,4 +1,4 @@
-import monument from "@/assets/karachi-monument-fade.jpg";
+import logoMark from "@/assets/sih-logo.png";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, ChevronLeft, ChevronRight, Headphones, RotateCcw, ShieldCheck, Truck, Instagram, Facebook, Mail, Music2, Quote, Star, Youtube, type LucideIcon } from "lucide-react";
 import { useEffect, useState } from "react";
@@ -6,7 +6,6 @@ import reviewAhsan from "@/assets/review-ahsan.jpg";
 import reviewHamza from "@/assets/review-hamza.jpg";
 import reviewSaad from "@/assets/review-saad.jpg";
 import reviewDanish from "@/assets/review-danish.jpg";
-import storyImage from "@/assets/sih-story.jpg";
 import grittyBackdrop from "@/assets/gritty-backdrop.jpg";
 import { Hero } from "@/components/site/Hero";
 import { Footer } from "@/components/site/Footer";
@@ -201,7 +200,7 @@ function Index() {
       <main>
         <section className="border-b-2 border-foreground bg-background">
           <div className="relative overflow-hidden border-b border-border">
-            <img src={monument} alt="" aria-hidden width={1920} height={640} loading="lazy" className="pointer-events-none absolute inset-y-0 right-0 h-full w-full object-cover object-right opacity-70 sm:w-3/4" />
+            <img src={logoMark} alt="" aria-hidden loading="lazy" className="pointer-events-none absolute right-[-4%] top-1/2 h-[140%] w-auto max-w-none -translate-y-1/2 object-contain opacity-[0.09] grayscale" />
             <div className="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-transparent" />
             <Reveal className="page-shell relative flex flex-col gap-6 py-12 sm:flex-row sm:items-end sm:justify-between sm:py-16">
               <div className="editorial-rule pl-5 sm:pl-7">
@@ -231,23 +230,6 @@ function Index() {
               {CATEGORIES.map((c) => <CategoryCard key={c.slug} category={c} />)}
             </div>
           </div>
-        </section>
-
-        <section className="page-shell section-space grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
-          <Reveal className="border border-foreground bg-contrast p-0">
-            <img src={storyImage} alt="The SIH WEARS story" loading="lazy" className="aspect-[3/2] w-full object-cover" />
-          </Reveal>
-          <Reveal delay={1}>
-            <p className="eyebrow">About SIH WEARS</p>
-            <h2 className="mt-3 text-3xl font-extrabold uppercase leading-[0.95] sm:text-5xl">Built for men who refuse to compromise</h2>
-            <p className="mt-5 max-w-lg text-sm leading-7 text-muted-foreground sm:text-base">
-              SIH Wears is a menswear label built around a single idea: your wardrobe should work as hard as you do. Every piece is cut for modern proportions and finished to last past a single season.
-            </p>
-            <div className="mt-7 flex flex-wrap gap-3">
-              <Button asChild><Link to="/about">Our Story</Link></Button>
-              <Button asChild variant="outline"><Link to="/chapters">Seven Chapters</Link></Button>
-            </div>
-          </Reveal>
         </section>
 
         <section className="border-y-2 border-foreground" aria-labelledby="brand-standards">

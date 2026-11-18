@@ -50,8 +50,19 @@ export const categoryName = (slug: CategorySlug) =>
 
 /** Placeholder "coming soon" items have no price and cannot be bought. */
 export const isComingSoon = (p: Pick<Product, "price">) => p.price <= 0;
-/** Alternate (back) view for products whose image follows the -front naming. */
-export const altImage = (src: string) => (src.includes("-front.") ? src.replace("model-hoodie-", "sih-hoodie-").replace("-front.", "-back.") : undefined);
-
-/** On-model shot for hoodie cards when a matching model photo exists. */
-export const cardImage = (src: string) => (/sih-hoodie-(burgundy|navy)-front\./.test(src) ? src.replace("sih-hoodie-", "model-hoodie-") : src);
+const BUNDLED = import.meta.glob("@/assets/products/*", { eager: true, import: "default" }) as Record<string, string>;
+const BY_NAME: Record<string, string> = Object.fromEntries(Object.entries(BUNDLED).map(([k, v]) => [k.split("/").pop()!, v]));
+const fileOf = (src: string) => src.split("/").pop()!.split("?")[0]!;
+/** Serve product photos from bundled assets so they load on any host (e.g. Vercel). */
+export const resolveImage = (src: string) => (src && src.startsWith("/product-images/") ? BY_NAME[fileOf(src)] ?? src : src);
+const findBundled = (name: string) => BY_NAME[name];
+/** Alternate (back) view for hoodies. */
+export const altImage = (src: string) => {
+  const m = /hoodie-(burgundy|navy)-front/.exec(src);
+  return m ? findBundled(`sih-hoodie-${m[1]}-back.jpg`) : undefined;
+};
+/** On-model shot for hoodie cards. */
+export const cardImage = (src: string) => {
+  const m = /hoodie-(burgundy|navy)-front/.exec(src);
+  return (m && findBundled(`model-hoodie-${m[1]}-front.jpg`)) || src;
+};

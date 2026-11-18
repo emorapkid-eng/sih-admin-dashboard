@@ -29,7 +29,6 @@ function About() {
           <p className="eyebrow text-foreground">3-Day Return Policy</p>
           <div className="flex flex-wrap gap-3 pt-2">
             <Button asChild><Link to="/shop">Shop Collection</Link></Button>
-            <Button asChild variant="outline"><Link to="/chapters">Seven Chapters</Link></Button>
           </div>
         </Reveal>
         <Reveal delay={1} className="border border-foreground bg-soft p-6 sm:p-10">

@@ -14,7 +14,6 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as CapsRouteImport } from './routes/caps'
 import { Route as CartRouteImport } from './routes/cart'
-import { Route as ChaptersRouteImport } from './routes/chapters'
 import { Route as CheckoutRouteImport } from './routes/checkout'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as HoodiesRouteImport } from './routes/hoodies'
@@ -47,11 +46,6 @@ const CapsRoute = CapsRouteImport.update({
 const CartRoute = CartRouteImport.update({
   id: '/cart',
   path: '/cart',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ChaptersRoute = ChaptersRouteImport.update({
-  id: '/chapters',
-  path: '/chapters',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CheckoutRoute = CheckoutRouteImport.update({
@@ -102,7 +96,6 @@ export interface FileRoutesByFullPath {
   '/admin': typeof AdminRoute
   '/caps': typeof CapsRoute
   '/cart': typeof CartRoute
-  '/chapters': typeof ChaptersRoute
   '/checkout': typeof CheckoutRoute
   '/contact': typeof ContactRoute
   '/hoodies': typeof HoodiesRoute
@@ -118,7 +111,6 @@ export interface FileRoutesByTo {
   '/admin': typeof AdminRoute
   '/caps': typeof CapsRoute
   '/cart': typeof CartRoute
-  '/chapters': typeof ChaptersRoute
   '/checkout': typeof CheckoutRoute
   '/contact': typeof ContactRoute
   '/hoodies': typeof HoodiesRoute
@@ -135,7 +127,6 @@ export interface FileRoutesById {
   '/admin': typeof AdminRoute
   '/caps': typeof CapsRoute
   '/cart': typeof CartRoute
-  '/chapters': typeof ChaptersRoute
   '/checkout': typeof CheckoutRoute
   '/contact': typeof ContactRoute
   '/hoodies': typeof HoodiesRoute
@@ -153,7 +144,6 @@ export interface FileRouteTypes {
     | '/admin'
     | '/caps'
     | '/cart'
-    | '/chapters'
     | '/checkout'
     | '/contact'
     | '/hoodies'
@@ -169,7 +159,6 @@ export interface FileRouteTypes {
     | '/admin'
     | '/caps'
     | '/cart'
-    | '/chapters'
     | '/checkout'
     | '/contact'
     | '/hoodies'
@@ -185,7 +174,6 @@ export interface FileRouteTypes {
     | '/admin'
     | '/caps'
     | '/cart'
-    | '/chapters'
     | '/checkout'
     | '/contact'
     | '/hoodies'
@@ -202,7 +190,6 @@ export interface RootRouteChildren {
   AdminRoute: typeof AdminRoute
   CapsRoute: typeof CapsRoute
   CartRoute: typeof CartRoute
-  ChaptersRoute: typeof ChaptersRoute
   CheckoutRoute: typeof CheckoutRoute
   ContactRoute: typeof ContactRoute
   HoodiesRoute: typeof HoodiesRoute
@@ -248,13 +235,6 @@ declare module '@tanstack/react-router' {
       path: '/cart'
       fullPath: '/cart'
       preLoaderRoute: typeof CartRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/chapters': {
-      id: '/chapters'
-      path: '/chapters'
-      fullPath: '/chapters'
-      preLoaderRoute: typeof ChaptersRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/checkout': {
@@ -322,7 +302,6 @@ const rootRouteChildren: RootRouteChildren = {
   AdminRoute: AdminRoute,
   CapsRoute: CapsRoute,
   CartRoute: CartRoute,
-  ChaptersRoute: ChaptersRoute,
   CheckoutRoute: CheckoutRoute,
   ContactRoute: ContactRoute,
   HoodiesRoute: HoodiesRoute,
