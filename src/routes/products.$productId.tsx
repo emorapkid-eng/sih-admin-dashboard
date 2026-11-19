@@ -4,7 +4,7 @@ import { useState } from "react";
 import { ProductGrid, Shell, meta } from "@/components/site/Shell";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/lib/cart";
-import { categoryName, formatPrice, isComingSoon } from "@/lib/shop";
+import { cardImage, categoryName, formatPrice, isComingSoon } from "@/lib/shop";
 import { useProducts } from "@/lib/products-context";
 import { listProducts } from "@/lib/products.functions";
 
@@ -48,7 +48,7 @@ function ProductPage() {
       </div>
       <section className="page-shell grid gap-8 py-8 md:grid-cols-2 lg:gap-16 lg:py-12">
         <div className="overflow-hidden rounded-sm bg-soft">
-          <img src={product.image} alt={product.name} className="aspect-[4/5] w-full object-cover" />
+          <img src={cardImage(product.image)} alt={product.name} className="aspect-[4/5] w-full object-cover" />
         </div>
         <div className="md:py-6">
           {product.tag && <span className="bg-primary px-2.5 py-1 text-[0.58rem] font-semibold uppercase tracking-[0.12em] text-primary-foreground">{product.tag}</span>}
