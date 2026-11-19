@@ -21,8 +21,8 @@ export function checkCredentials(email: string, password: string) {
   const adminPassword = process.env["ADMIN_PASSWORD"] ?? "";
   if (!adminEmail || !adminPassword || !secret()) return false;
   return (
-    safeEqual(email.trim().toLowerCase(), adminEmail.trim().toLowerCase()) &&
-    safeEqual(password, adminPassword)
+    safeEqual(email.replace(/\s+/g, "").toLowerCase(), adminEmail.replace(/\s+/g, "").toLowerCase()) &&
+    safeEqual(password.trim(), adminPassword.trim())
   );
 }
 
